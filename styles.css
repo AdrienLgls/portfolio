@@ -1,0 +1,258 @@
+:root {
+  --color-primary: #ffffff;
+  --color-background: #151515;
+  --color-accent-vert: #00cba9;
+  --color-accent-orange: #DE6127;
+}
+
+@font-face {
+  font-family: "grotesk";
+  src: url("fonts/esse-grotesk.otf");
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* Global Styles */
+body {
+  font-family: "grotesk", Arial, sans-serif;
+  color: var(--color-primary);
+  background-color: var(--color-background);
+  margin-left: 0px;
+  margin-right: 0px;
+}
+
+h1 {
+  text-align: center;
+  color: var(--color-primary);
+  font-weight: 500;
+  font-size: 150px;
+  margin-top: 300px;
+  margin-bottom: 20px;
+}
+
+h2 {
+  text-align: left;
+  font-size: 50px;
+  margin-top: 0px;
+  margin-left: 100px;
+}
+
+h3 {
+  text-align: center;
+  font-size: 30px;
+  font-weight: 300;
+}
+
+a {
+  text-decoration: none;
+  color: var(--color-primary);
+}
+
+p {
+  width: 800px;
+  font-size: 30px;
+  padding-top: 30px;
+  padding-right: 30px;
+}
+
+span {
+  text-align: center;
+}
+
+/* Layout */
+nav {
+  position: fixed;
+  top: 0;
+  display: flex;
+  justify-content: space-between;
+  width: 99%;
+  margin-left: 1%;
+  z-index: 10;
+}
+
+nav ul {
+  display: flex;
+  padding: 0;
+}
+
+li {
+  list-style: none;
+  padding: 10px 38px;
+  text-align: center;
+}
+
+main {
+  background-color: var(--color-background);
+}
+
+section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 0px;
+  position: relative;
+}
+
+section div {
+  border: solid var(--color-primary) 2px;
+  height: 300px;
+  width: 300px;
+}
+
+article {
+  margin: 80px;
+  position: relative;
+}
+
+/*form*/
+
+input[type=text], textarea, input[type=email] {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-top: 6px;
+  margin-bottom: 16px;
+  margin-right: 0px;
+  margin-left: 0px;
+  resize: vertical;
+}
+label{margin-right: 0px;
+  margin-left: 0px;
+  width: 100%;}
+
+input[type=submit] {
+  background-color: #00cba9;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type=submit]:hover {
+  background-color: #00d4b1;
+}
+
+form {
+  margin-bottom: 100px;
+}
+
+footer {
+  text-align: center;
+}
+
+/* Classes */
+.menu::after {
+  content: "";
+  display: flex;
+  width: 80px;
+  margin-top: 5px;
+  height: 2px;
+  background-color: var(--color-primary);
+  transform: scale(0);
+  transition: transform 0.2s ease-in-out;
+}
+
+.menu:hover::after {
+  transform: scale(1);
+}
+
+.presentation {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.vague {
+  margin-bottom: -10px;
+}
+
+.vert {
+  background-color: var(--color-accent-vert);
+}
+
+.orange {
+  background-color: var(--color-accent-orange);
+}
+
+.bulle1 {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  border-radius: 50px;
+  top: -30px;
+  background-color: var(--color-primary);
+}
+
+.bulle2 {
+  position: absolute;
+  width: 50px;
+  border-radius: 50px;
+  top: -30px;
+  left: 70px;
+  background-color: var(--color-primary);
+}
+
+.fond {
+  background-color: var(--color-background);
+}
+
+.projets {
+  width: 500px;
+  height: 300px;
+  border-radius: 20px;
+}
+
+.titreproj {
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 20px;
+  width: 500px;
+  height: 300px;
+  margin: 0;
+  font-size: 50px;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.titreproj:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* IDs */
+#profil {
+  width: 300px;
+  border-radius: 300px;
+  height: 300px;
+  background-image: url(images/profil.jpeg);
+  background-position: center;
+  background-size: cover;
+}
+
+#top {
+  position: absolute;
+  top: 0;
+}
+
+#img1{
+  background-image: url(images/portfolio_hardis.png);
+  background-size: cover;
+}
+
+#img2 {
+  background-image: url(images/nutriscore.png);
+  background-size: cover;
+}
+
+#img3 {
+  background-image: url(images/depeche.jpg);
+  background-size: cover;
+}
+
+#img4 {
+  background-image: url(images/titanic.png);
+  background-size: cover;
+}
+
+#doc {
+  margin-left: 25%;
+}
