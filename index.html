@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adrien Leglise - Développement & IA</title>
+
+    <!-- Polices Google -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800;900&family=Inter:wght@300;400;500;600&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome (Icônes) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <!-- Feuille de style personnalisée -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- =========== HEADER START =========== -->
+    <header class="site-header" id="siteHeader">
+        <div class="container header-container">
+            <div class="site-logo">
+                <a href="#hero" aria-label="Accueil">
+                    <img src="img/homeDetour.png" alt="Logo Adrien Leglise - Accueil">
+                </a>
+            </div>
+            <button class="menu-toggle" id="menuToggle" aria-label="Ouvrir le menu" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <nav class="main-nav">
+                <ul id="navLinks">
+                    <li><a href="#about" class="nav-link">À Propos</a></li>
+                    <li><a href="#projects" class="nav-link">Projets</a></li>
+                    <li><a href="#process" class="nav-link">Approche</a></li>
+                    <li><a href="#contact" class="nav-link contact-button-nav">Contactez-moi <span class="arrow">→</span></a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <!-- =========== HEADER END =========== -->
+
+    <main>
+        <!-- =========== HERO SECTION START =========== -->
+        <section class="section hero-section" id="hero">
+            <div class="hero-image-container">
+                 <!-- L'image de fond est définie en CSS, l'icône est un placeholder -->
+                 <i class="fas"></i>
+            </div>
+            <div class="container">
+                 <div class="hero-content-wrapper">
+                    <div class="hero-content">
+                        <h1 class="reveal-on-scroll">
+                            <span class="hero-line">Développeur</span>
+                            <span class="hero-line">Front-End,</span>
+                            <span class="hero-line">Passion IA &</span>
+                            <span class="hero-line accent-text">Créativité.</span>
+                        </h1>
+                    </div>
+                    <a href="#about" class="scroll-down-circle reveal-on-scroll" data-delay="300" aria-label="En savoir plus">
+                        Scroll
+                    </a>
+                </div>
+            </div>
+        </section>
+        <!-- =========== HERO SECTION END =========== -->
+
+        <!-- =========== ABOUT SECTION START =========== -->
+        <section class="section about-section section-bandeau" id="about">
+            <div class="subtle-wave-container wave-top">
+                <div class="subtle-wave wave-back"></div>
+                <div class="subtle-wave wave-front"></div>
+            </div>
+            <div class="container">
+                <div class="about-content reveal-on-scroll">
+                    <h2 class="wavy-underline left-aligned-title">Mon Parcours, Ma Vision.</h2>
+                    <p>Bonjour ! Je suis Adrien Leglise, actuellement étudiant en BUT Informatique. Le code est mon langage, mais la créativité est ma boussole. Je conçois des expériences numériques qui allient esthétique épurée et fonctionnalité intelligente.</p>
+                    <p>L'IA me passionne : je cherche à intégrer cette dimension dans des solutions front-end innovantes. Mon objectif : des interfaces qui ne sont pas seulement belles, mais aussi perspicaces.</p>
+                </div>
+                <div class="about-image reveal-on-scroll" data-delay="200">
+                    <!-- Assurez-vous que cette image est dans votre dossier img/ -->
+                    <img src="img/Moi.png" alt="Adrien Leglise">
+                </div>
+            </div>
+            <div class="subtle-wave-container wave-bottom">
+                <div class="subtle-wave wave-back"></div>
+                <div class="subtle-wave wave-front"></div>
+            </div>
+        </section>
+        <!-- =========== ABOUT SECTION END =========== -->
+
+        <!-- =========== PROJECTS SECTION START =========== -->
+        <section class="section projects-section" id="projects">
+            <div class="container">
+                <h2 class="reveal-on-scroll wavy-underline centered-title">Projets Récents.</h2>
+                <div class="projects-grid">
+                    <!-- Projet 1 -->
+                    <div class="project-card reveal-on-scroll">
+                        <a href="#" class="project-link" data-modal-id="modalHardis">
+                            <div class="project-image-wrapper">
+                                <!-- Mettez le vrai chemin de l'image ou laissez pour JS -->
+                                <img src="img/Moi.png" alt="Site Hardis Group">
+                            </div>
+                            <div class="project-content">
+                                <h3>Site Vitrine Hardis Group</h3>
+                                <p class="project-description">Développement d'interfaces pour le site du groupe. L'objectif était de dynamiser la présentation des services et produits.</p>
+                                <div class="project-tech"><span>HTML</span><span>CSS</span><span>JS</span></div>
+                            </div>
+                        </a>
+                    </div>
+                    <!-- Projet 2 -->
+                    <div class="project-card reveal-on-scroll" data-delay="150">
+                         <a href="#" class="project-link" data-modal-id="modalNutriscore">
+                            <div class="project-image-wrapper">
+                                <img src="img/Moi.png" alt="Analyse Nutriscore">
+                            </div>
+                            <div class="project-content">
+                                <h3>Analyse Data Nutriscore</h3>
+                                <p class="project-description">Exploration de données alimentaires pour décrypter les facteurs influençant le Nutriscore (SQL, R).</p>
+                                <div class="project-tech"><span>SQL</span><span>R</span><span>DataViz</span></div>
+                            </div>
+                        </a>
+                    </div>
+                    <!-- Projet 3 -->
+                    <div class="project-card reveal-on-scroll" data-delay="300">
+                        <a href="#" class="project-link" data-modal-id="modalPresse">
+                            <div class="project-image-wrapper">
+                                <img src="img/Moi.png" alt="Analyse Presse">
+                            </div>
+                            <div class="project-content">
+                                <h3>Analyse Sémantique Presse</h3>
+                                <p class="project-description">Application de techniques NLP (Python) pour dégager des tendances et sentiments sur des sujets d'actualité.</p>
+                                <div class="project-tech"><span>Python</span><span>NLP</span><span>SQL</span></div>
+                            </div>
+                        </a>
+                    </div>
+                    <!-- Projet 4 (Concept IA) -->
+                    <div class="project-card reveal-on-scroll" data-delay="450">
+                        <a href="#" class="project-link" data-modal-id="modalAI">
+                            <div class="project-image-wrapper" style="background-color: var(--accent-secondary); display:flex; align-items:center; justify-content:center;">
+                                <i class="fas fa-microchip fa-3x" style="color:var(--accent-primary)"></i>
+                            </div>
+                            <div class="project-content">
+                                <h3>Exploration IA [Concept]</h3>
+                                <p class="project-description">Prototypage d'un modèle d'IA pour [objectif précis]. Accent sur l'expérimentation et l'apprentissage.</p>
+                                <div class="project-tech"><span>Python</span><span>ML</span></div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="subtle-wave-container wave-bottom">
+                <div class="subtle-wave wave-back"></div>
+                <div class="subtle-wave wave-front"></div>
+            </div>
+        </section>
+        <!-- =========== PROJECTS SECTION END =========== -->
+
+        <!-- =========== PROCESS SECTION START =========== -->
+        <section class="section process-section section-bandeau" id="process">
+            <div class="subtle-wave-container wave-top">
+                <div class="subtle-wave wave-back"></div>
+                <div class="subtle-wave wave-front"></div>
+            </div>
+            <div class="container">
+                <h2 class="reveal-on-scroll wavy-underline centered-title">Mon Approche Créative.</h2>
+                <div class="process-steps">
+                     <div class="process-step reveal-on-scroll">
+                        <span class="step-number">01.</span>
+                        <h3>Idéation & Concept</h3>
+                        <p>Définir le "pourquoi" avant le "comment". Analyse des besoins, brainstorming et esquisse des premières pistes.</p>
+                    </div>
+                    <div class="process-step reveal-on-scroll" data-delay="150">
+                        <span class="step-number">02.</span>
+                        <h3>Design & Prototype</h3>
+                        <p>Structurer l'information, concevoir l'interface (UX/UI) et créer des prototypes interactifs pour valider la direction.</p>
+                    </div>
+                    <div class="process-step reveal-on-scroll" data-delay="300">
+                        <span class="step-number">03.</span>
+                        <h3>Développement & Itération</h3>
+                        <p>Coder avec soin, en privilégiant la clarté et la performance. Tests et ajustements continus basés sur les retours.</p>
+                    </div>
+                     <div class="process-step reveal-on-scroll" data-delay="450">
+                        <span class="step-number">04.</span>
+                        <h3>Finition & Lancement</h3>
+                        <p>Optimisation finale, s'assurer de la robustesse et préparer le déploiement pour une expérience utilisateur impeccable.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="subtle-wave-container wave-bottom">
+                <div class="subtle-wave wave-back"></div>
+                <div class="subtle-wave wave-front"></div>
+            </div>
+        </section>
+        <!-- =========== PROCESS SECTION END =========== -->
+
+        <!-- =========== CONTACT SECTION START =========== -->
+        <section class="section contact-section" id="contact">
+             <div class="subtle-wave-container wave-top">
+                <div class="subtle-wave wave-back"></div>
+                <div class="subtle-wave wave-front"></div>
+            </div>
+            <div class="container">
+                <h2 class="reveal-on-scroll wavy-underline centered-title">Parlons de votre projet.</h2>
+                <p class="contact-intro reveal-on-scroll" data-delay="100">
+                    Une idée à concrétiser, une collaboration en vue ou simplement envie de discuter technologie et design ?
+                </p>
+                <a href="mailto:adrien.leglise.pro@email.com" class="contact-button reveal-on-scroll" data-delay="200">Contactez-moi</a>
+                <div class="social-links reveal-on-scroll" data-delay="300">
+                    <ul>
+                        <li><a href="https://www.linkedin.com/in/adrienleglise/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a></li>
+                        <li><a href="https://github.com/AdrienLgls" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <!-- =========== CONTACT SECTION END =========== -->
+    </main>
+
+    <!-- =========== FOOTER START =========== -->
+    <footer class="site-footer">
+        <div class="container">
+            <p>© <span id="currentYear"></span> Adrien Leglise. Tous droits réservés.</p>
+        </div>
+    </footer>
+    <!-- =========== FOOTER END =========== -->
+
+    <!-- =========== PROJECT MODAL START =========== -->
+    <div id="projectModal" class="modal" style="display:none;">
+        <div class="modal-content">
+            <button class="close-modal-btn">×</button>
+            <div id="modalBody">
+                <h3>Titre du Projet</h3>
+                <!-- L'image sera remplacée par JS, vous pouvez mettre un placeholder local si besoin -->
+                <img src="img/Moi.png" alt="Image du Projet">
+                <p>Description détaillée du projet...</p>
+            </div>
+        </div>
+    </div>
+    <!-- =========== PROJECT MODAL END =========== -->
+
+    <!-- Script personnalisé (placé à la fin pour de meilleures performances) -->
+    <script src="js/script.js"></script>
+
+</body>
+</html>

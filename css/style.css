@@ -1,0 +1,789 @@
+/* =========== VARIABLES CSS =========== */
+:root {
+    --bg-color: #FFFFFF; 
+    --text-primary: #1A1A1A; 
+    --text-secondary: #5B5B5B; 
+    --accent-primary: #F0122D; 
+    --card-bg-color: #FFFFFF; /* Utilisé pour les cartes projets et modale */
+    --border-color: rgba(0, 0, 0, 0.1);
+    
+    --wave-fill-back: rgba(0,0,0,0.03); 
+    --wave-fill-front: rgba(0,0,0,0.05);
+
+    --font-hero-title: 'Playfair Display', serif; /* Pour le H1 du Hero */
+    --font-section-title: 'Playfair Display', serif; /* Pour les H2 de section */
+    --font-card-title: 'Syne', sans-serif; /* Pour les H3 ou titres de cartes */
+    --font-body: 'Inter', sans-serif;
+
+    --container-width: 1200px;
+    --gutter: 25px;
+}
+
+/* =========== RESET ET STYLES GLOBAUX =========== */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 16px;
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    font-family: var(--font-body);
+    line-height: 1.7;
+    overflow-x: hidden; /* Empêche le débordement horizontal */
+    position: relative; /* Pour le z-index des vagues */
+}
+
+.container {
+    max-width: var(--container-width);
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: var(--gutter);
+    padding-right: var(--gutter);
+    position: relative; 
+    z-index: 2; /* Pour être au-dessus des vagues de section */
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--text-primary);
+}
+
+/* --- Typographie Spécifique --- */
+.hero-section h1 {
+    font-family: var(--font-hero-title);
+    font-size: clamp(3.5rem, 9vw, 7.5rem); 
+    font-weight: 800;
+    line-height: 0.95;
+    letter-spacing: -0.03em;
+    margin: 0;
+}
+.hero-line {
+    display: block;
+}
+.hero-line.accent-text {
+    color: var(--accent-primary);
+}
+
+h2 { /* Titres de section */
+    font-family: var(--font-section-title);
+    font-size: clamp(2.2rem, 5vw, 3.5rem);
+    font-weight: 700;
+    margin-bottom: 2.5rem; 
+    position: relative;
+    padding-bottom: 0.8rem; 
+    text-align: center;
+}
+
+/* Soulignement ondulé pour les titres h2 */
+h2.wavy-underline::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%; 
+    transform: translateX(-50%) scaleX(0); 
+    width: 100px; 
+    height: 10px;
+    /* SVG pour l'ondulation, couleur encodée pour stroke */
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 10"><path d="M0,5 Q25,-2 50,5 T100,5" fill="none" stroke="%23F0122D" stroke-width="1.5"/></svg>');
+    background-repeat: no-repeat;
+    background-size: contain;
+    transform-origin: center bottom;
+    opacity: 0;
+    transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1) 0.2s,
+                opacity 0.4s ease-out 0.2s;
+}
+/* Pour les titres alignés à gauche, ajuster l'origine de la transformation */
+h2.wavy-underline.left-aligned-title::after {
+    left: 0;
+    transform: scaleX(0); 
+    transform-origin: left bottom;
+}
+/* Animation du soulignement au scroll/visibilité */
+.reveal-on-scroll.is-visible h2.wavy-underline::after,
+h2.wavy-underline.is-visible::after {
+    transform: translateX(-50%) scaleX(1); 
+    opacity: 1;
+}
+.reveal-on-scroll.is-visible h2.wavy-underline.left-aligned-title::after,
+h2.wavy-underline.is-visible.left-aligned-title::after {
+    transform: scaleX(1); 
+    opacity: 1;
+}
+
+h3 { 
+    font-family: var(--font-card-title);
+    font-size: clamp(1.2rem, 2.2vw, 1.6rem);
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+    color: var(--text-primary);
+}
+
+p {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+    max-width: 60ch; /* Limite la largeur pour la lisibilité */
+}
+
+a {
+    color: var(--accent-primary);
+    text-decoration: none;
+    transition: opacity 0.3s ease;
+}
+a:hover, a:focus {
+    opacity: 0.75;
+}
+
+/* =========== HEADER =========== */
+.site-header {
+    padding: var(--gutter) 0;
+    position: absolute; 
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    background-color: transparent;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+.site-header.scrolled { /* Style quand l'utilisateur a scrollé */
+    position:fixed;
+    background-color: rgba(255, 255, 255, 0.9); /* Fond semi-transparent */
+    backdrop-filter: blur(8px); /* Effet de flou pour le fond */
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.site-logo a {
+    display: block; /* Garde le lien comme un bloc pour faciliter le clic */
+    /* Si votre image a une couleur de fond que vous voulez "retirer" ou
+       si vous voulez que le lien ait une couleur d'accent, vous pouvez la garder :
+       color: var(--accent-primary);
+       Mais cela n'affectera pas l'image elle-même directement. */
+}
+
+.site-logo img {
+    width: 45px; /* Définissez la largeur souhaitée pour votre logo */
+    height: auto; /* Maintient les proportions de l'image */
+    display: block; /* Évite les espaces indésirables en dessous de l'image */
+    transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Conserve l'animation de transition */
+}
+
+.site-logo a:hover img {
+    transform: rotate(-7deg) scale(1.08) translateY(-1px); /* Conserve l'effet de survol */
+}
+
+/*
+.site-logo a {
+    display: block;
+    color: var(--accent-primary); 
+}
+.site-logo svg {
+    width: 45px;
+    height: auto;
+    fill: currentColor;
+    transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+}
+.site-logo a:hover svg {
+    transform: rotate(-7deg) scale(1.08) translateY(-1px); 
+} */
+
+.main-nav ul {
+    list-style: none;
+    display: flex;
+    gap: calc(var(--gutter) * 1.2); /* Espacement entre les liens */
+}
+.main-nav a {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    letter-spacing: 0.02em;
+    padding: 0.5rem 0;
+    position: relative; /* Pour le pseudo-élément de soulignement */
+}
+/* Soulignement vague personnalisé pour les liens de navigation */
+.main-nav a::after { 
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 6px; 
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 6"><path d="M0,3 Q12.5,0 25,3 T50,3" fill="none" stroke="%23F0122D" stroke-width="1.2"/></svg>');
+    background-repeat: no-repeat;
+    background-size: 100% 100%; 
+    opacity: 0;
+    transform: scaleX(0.8) translateY(4px); 
+    transform-origin: center bottom;
+    transition: opacity 0.3s ease-out, transform 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+}
+.main-nav a:hover, .main-nav a.active-link {
+    color: var(--text-primary);
+}
+.main-nav a:hover::after, .main-nav a.active-link::after {
+    opacity: 1;
+    transform: scaleX(1) translateY(0);
+}
+/* Bouton contact spécifique dans la navigation */
+.main-nav a.contact-button-nav {
+    color: var(--accent-primary);
+    border: 1.5px solid var(--accent-primary);
+    padding: 0.35rem 0.9rem;
+    border-radius: 50px;
+    display: inline-flex;
+    align-items: center;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+.main-nav a.contact-button-nav .arrow {
+    margin-left: 0.4em;
+    transition: transform 0.3s ease;
+}
+.main-nav a.contact-button-nav:hover {
+    background-color: var(--accent-primary);
+    color: var(--bg-color); 
+    opacity: 1;
+}
+ .main-nav a.contact-button-nav:hover .arrow {
+    transform: translateX(3px) rotate(-45deg);
+ }
+
+/* Bouton burger pour mobile, caché par défaut */
+.menu-toggle { display: none; }
+.menu-toggle span { background: var(--text-primary); }
+
+
+/* =========== SECTIONS GÉNÉRIQUES =========== */
+.section {
+    padding-top: 100px; 
+    padding-bottom: 70px;
+    position: relative; /* Pour les vagues et autres éléments positionnés */
+    overflow: hidden;  /* Empêche les vagues de créer des barres de défilement */
+    z-index:0; /* Contexte d'empilement pour les vagues */
+}
+
+/* Sections "bandeau" avec fond transparent (héritent du body) */
+.section-bandeau {
+    background-color: transparent; 
+    border-top: none;
+    border-bottom: none;
+    /* Ajustement du padding pour que les vagues servent de délimiteurs visuels */
+    padding-top: calc(100px + 40px); 
+    padding-bottom: calc(70px + 40px);
+}
+
+/* Conteneur pour les vagues subtiles */
+.subtle-wave-container {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 80px; 
+    overflow: hidden;
+    pointer-events: none; /* Les vagues ne doivent pas être interactives */
+}
+.subtle-wave-container.wave-top { 
+    top: 0; 
+    transform: rotate(180deg); /* Inverse la vague pour le haut */
+    z-index: 0; /* Derrière le contenu de la section mais sur le fond de la section */
+}
+.subtle-wave-container.wave-bottom { 
+     bottom: 0; 
+     z-index: 0;
+}
+/* Pour les sections qui ne sont PAS .section-bandeau, les vagues sont derrière le fond de la section */
+.section:not(.section-bandeau) .subtle-wave-container {
+    z-index: -1; 
+}
+
+/* Style des vagues SVG animées */
+.subtle-wave {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 300%; /* Plus large pour permettre l'animation de défilement */
+    height: 100%;
+    background-repeat: repeat-x;
+}
+.subtle-wave.wave-back {
+    /* SVG pour la vague arrière, couleur encodée dans 'fill' */
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M0,66 C200,130 350,0 600,60 C850,130 1000,0 1200,60 L1200,120 L0,120 Z" fill="rgba(0,0,0,0.03)"/></svg>');
+    animation: subtle-wave-flow 45s linear infinite;
+    z-index: 1; 
+}
+.subtle-wave.wave-front {
+    /* SVG pour la vague avant, couleur encodée dans 'fill' */
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M0,80 C150,20 400,130 600,80 C800,20 1050,130 1200,80 L1200,120 L0,120 Z" fill="rgba(0,0,0,0.02)"/></svg>');
+    animation: subtle-wave-flow 35s linear infinite reverse; /* Direction inverse pour un effet plus naturel */
+    z-index: 2; 
+}
+
+/* Animation de défilement horizontal pour les vagues */
+ @keyframes subtle-wave-flow {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-66.66%); } /* 2/3 de la largeur car width: 300% */
+}
+
+/* =========== HERO SECTION =========== */
+.hero-section {
+    min-height: 100vh; /* Prend au moins toute la hauteur de l'écran */
+    display: flex;
+    align-items: center; 
+    position: relative;
+    padding-top: 100px; 
+    padding-bottom: 50px;
+    overflow: hidden; 
+}
+.hero-content-wrapper { /* Wrapper pour le texte et le cercle de scroll */
+    position: relative;
+    z-index: 2; /* Au-dessus de l'image de fond */
+    width: 100%;
+}
+.hero-content {
+    max-width: 60%; /* Limite la largeur du texte */
+}
+
+.hero-image-container {
+    position: absolute;
+    top: 50%;
+    right: var(--gutter); 
+    transform: translateY(-50%);
+    width: 450px; 
+    height: 550px; 
+    background-color: #FFFFFF; /* Fond pour l'image */
+    z-index: 1; /* Derrière le contenu texte */
+    background-image: url('../img/home.png'); /* Image de fond - ajustez le chemin */
+    background-size: cover; 
+    background-position: center; 
+    display: flex; 
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+}
+ .hero-image-container .placeholder-icon { /* Si l'image ne charge pas */
+    font-size: 5rem;
+    color: rgba(0,0,0,0.1);
+ }
+
+.scroll-down-circle {
+    position: absolute;
+    bottom: 30px;
+    right: calc(var(--gutter) + 15px); 
+    width: 90px; 
+    height: 90px;
+    border: 1.5px solid var(--accent-primary);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 0.7rem;
+    color: var(--accent-primary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    line-height: 1.1;
+    animation: rotateCircleText 15s linear infinite; /* Animation de rotation */
+    z-index: 3; /* Au-dessus de tout */
+}
+
+@keyframes rotateCircleText { /* Animation pour le texte dans le cercle */
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+
+/* =========== ABOUT SECTION =========== */
+.about-section .about-image img { 
+    width: 100%;
+    max-width: 400px; 
+    height: auto;
+    object-fit: cover;
+    border-radius: 4px; 
+    margin: var(--gutter) auto 0 auto; 
+    display: block;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.06); 
+}
+.about-content strong { 
+    color: var(--text-primary); 
+    font-weight: 600; 
+}
+
+/* =========== PROJECTS SECTION =========== */
+.projects-section .subtle-wave-container { /* Position spécifique des vagues pour cette section */
+     bottom: -5px; /* Léger décalage pour un meilleur raccord visuel */
+     top: auto;
+     transform: rotate(0deg); /* Pas de rotation pour la vague du bas */
+     z-index: -1; /* Derrière les cartes de projet */
+}
+.projects-grid {
+    display: grid;
+    grid-template-columns: 1fr; /* Une colonne par défaut */
+    gap: calc(var(--gutter) * 2.5);
+}
+.project-card {
+    background-color: var(--card-bg-color);
+    border-radius: 6px;
+    overflow: hidden; /* Pour que l'image ne dépasse pas lors du hover */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column; /* Contenu vertical */
+    box-shadow: 0 4px 12px rgba(0,0,0,0.04); 
+}
+.project-card:hover {
+    transform: translateY(-6px); /* Effet de lévitation */
+    box-shadow: 0 8px 25px rgba(0,0,0,0.07);
+}
+.project-image-wrapper {
+    width: 100%;
+    padding-top: 60%; /* Ratio d'aspect pour l'image (hauteur = 60% de la largeur) */
+    position: relative;
+    overflow: hidden;
+    background-color: var(--accent-secondary, #e0e0e0); /* Couleur de fond si image absente */
+}
+.project-image-wrapper img {
+    position: absolute; 
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100%; 
+    object-fit: cover; /* S'assure que l'image couvre bien sans se déformer */
+    transition: transform 0.4s ease;
+}
+.project-card:hover .project-image-wrapper img {
+    transform: scale(1.03); /* Léger zoom sur l'image au survol */
+}
+.project-content {
+    padding: var(--gutter); 
+    flex-grow: 1; /* Permet au contenu de prendre l'espace restant */
+    display: flex;
+    flex-direction: column;
+}
+.project-description { 
+    font-size: 0.9rem; 
+    margin-bottom: 1rem; 
+    flex-grow: 1; /* Pousse les technos en bas */
+}
+.project-tech { 
+    margin-bottom: 1rem; 
+}
+.project-tech span { /* Badges pour les technologies */
+    font-size: 0.7rem; 
+    color: var(--text-secondary);
+    background-color: rgba(0,0,0, 0.03); 
+    padding: 0.25em 0.7em;
+    border-radius: 12px;
+    margin-right: 0.4em;
+    margin-bottom: 0.4em; /* Pour le retour à la ligne */
+    display: inline-block;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border: 1px solid rgba(0,0,0,0.05);
+}
+
+/* =========== PROCESS SECTION =========== */
+.process-section { 
+    text-align: center; 
+}
+.process-steps {
+    display: grid;
+    /* Grille responsive: s'adapte au nombre d'éléments, min 260px de large */
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); 
+    gap: calc(var(--gutter) * 1.5); 
+    margin-top: 2.5rem;
+    text-align: left; /* Contenu des étapes aligné à gauche */
+}
+.process-step { 
+    padding: var(--gutter); 
+    border: 1px solid var(--border-color); 
+    border-radius: 6px; 
+    background-color: var(--bg-color); /* Léger contraste avec le fond de la section-bandeau */
+    box-shadow: 0 4px 12px rgba(0,0,0,0.03); 
+}
+.process-step .step-number { 
+    font-family: var(--font-body); 
+    font-size: 0.85rem; 
+    font-weight: 600; 
+    color: var(--accent-primary); 
+    margin-bottom: 0.4rem; 
+    display: block; 
+}
+.process-step h3 { 
+    font-size: 1.2rem; 
+    color: var(--text-primary); 
+    margin-bottom: 0.5rem; 
+    font-family: var(--font-card-title); 
+}
+.process-step p { 
+    font-size: 0.9rem; 
+    margin-bottom: 0; 
+}
+
+/* =========== CONTACT SECTION =========== */
+.contact-section { 
+    text-align: center; 
+    padding-bottom: 100px; /* Plus de padding en bas */
+}
+ .contact-section .subtle-wave-container { /* Vague du haut uniquement pour cette section */
+    top: 0;
+    bottom:auto;
+    transform: rotate(180deg);
+    z-index: -1; 
+ }
+.contact-section .contact-intro { 
+    max-width: 55ch; /* Limite la largeur pour la lisibilité */
+    margin-left: auto; 
+    margin-right: auto; 
+    margin-bottom: 2rem; 
+    font-size:1.05rem; 
+}
+.contact-button {
+    font-family: var(--font-body);
+    font-size: 1rem; 
+    font-weight: 500; 
+    background-color: var(--accent-primary); 
+    color: var(--bg-color);
+    padding: 0.8em 2.2em; 
+    border-radius: 50px; 
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+    display: inline-block; 
+    margin-bottom: 2.5rem; 
+    border: 1px solid var(--accent-primary);
+}
+.contact-button:hover { 
+    background-color: transparent; 
+    color: var(--accent-primary); 
+    transform: translateY(-3px); /* Léger soulèvement */
+}
+.social-links ul { 
+    list-style: none; 
+    display: flex; 
+    justify-content: center; 
+    gap: calc(var(--gutter) * 1.5); 
+}
+.social-links a { 
+    color: var(--text-secondary); 
+    font-size: 1.2rem; 
+}
+.social-links a:hover { 
+    color: var(--accent-primary); 
+}
+
+/* =========== FOOTER =========== */
+.site-footer { 
+    text-align: center; 
+    padding: calc(var(--gutter) * 1.5) 0; 
+    border-top: 1px solid var(--border-color); 
+    position:relative; /* Pour s'assurer qu'il est au-dessus de tout élément flottant */
+    z-index:5; 
+    margin-top: 30px; /* Espace avant le footer */
+}
+.site-footer p { 
+    font-size: 0.8rem; 
+    color: var(--text-secondary); 
+    margin-bottom: 0.2rem; 
+}
+
+/* =========== ANIMATIONS AU SCROLL =========== */
+.reveal-on-scroll {
+    opacity: 0;
+    filter: blur(4px); 
+    transform: translateY(30px) scale(0.98); 
+    transition: opacity 0.7s cubic-bezier(0.215, 0.610, 0.355, 1.000),
+                transform 0.7s cubic-bezier(0.215, 0.610, 0.355, 1.000),
+                filter 0.6s cubic-bezier(0.215, 0.610, 0.355, 1.000) 0.1s; /* Léger délai sur le filtre */
+}
+.reveal-on-scroll.is-visible { /* Classe ajoutée par JS quand l'élément est visible */
+    opacity: 1;
+    filter: blur(0);
+    transform: translateY(0) scale(1);
+}
+
+/* =========== MODALE PROJET =========== */
+#projectModal { 
+    background-color: rgba(253, 248, 240, 0.9); /* Fond semi-transparent avec flou */
+    backdrop-filter: blur(5px);
+    /* display: none; est géré par JS, mais flex pour centrer si visible */
+    display: flex; 
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top:0; left:0; width:100%; height:100%;
+    z-index: 2000; /* Au-dessus de tout */
+}
+#projectModal .modal-content {
+    background-color: var(--card-bg-color); 
+    border: 1px solid var(--border-color); 
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1); 
+    padding: calc(var(--gutter) * 1.5);
+    border-radius: 8px;
+    max-width: 700px; /* Largeur maximale de la modale */
+    width: 90%; /* Responsive sur petits écrans */
+    max-height: 90vh; /* Hauteur maximale, pour éviter de déborder */
+    overflow-y: auto; /* Scroll si contenu trop long */
+    position: relative; /* Pour le bouton de fermeture */
+}
+#projectModal .modal-content img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+    margin-bottom: var(--gutter);
+    display: block; /* Pour centrer avec margin auto si besoin */
+}
+#projectModal .close-modal-btn { 
+    color: var(--text-secondary); 
+    background: none;
+    border: none;
+    font-size: 2rem;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    cursor: pointer;
+    line-height: 1;
+}
+#projectModal .close-modal-btn:hover {
+    color: var(--accent-primary);
+}
+
+
+/* =========== MEDIA QUERIES (Adaptation mobile) =========== */
+
+/* Styles pour tablettes et petits desktops (jusqu'à 992px) */
+@media (max-width: 992px) {
+    .hero-content { max-width: 75%; }
+    .hero-image-container { 
+        width: 350px; 
+        height: 450px; 
+        /* Sur tablette, on pourrait vouloir recentrer l'image ou la passer en dessous */
+        /* Pour l'instant, on la garde à droite, mais elle pourrait commencer à chevaucher le texte */
+    }
+}
+
+
+/* Styles pour mobiles (jusqu'à 768px) */
+@media (max-width: 768px) {
+    .hero-section { 
+        text-align: center; 
+        align-items: center; 
+        flex-direction: column; 
+        justify-content: center; 
+        min-height: 80vh; /* Un peu moins haut sur mobile */
+    }
+    .hero-content { 
+        max-width: 90%; 
+        text-align: center; 
+        margin-bottom: 2rem; 
+    }
+    .hero-section h1 { 
+        font-size: clamp(2.8rem, 10vw, 4.5rem); /* Taille adaptée pour mobile */
+    }
+    .hero-image-container { 
+        position: relative; /* Repositionnement pour mobile */
+        width: 80%; 
+        height: 300px; 
+        margin: 0 auto 2rem auto; /* Centré et avec marge en bas */
+        top:auto; transform:none; left:auto; right:auto; 
+    }
+    .scroll-down-circle {
+        width: 70px; height: 70px; font-size: 0.6rem;
+        /* Positionné en bas à droite de la viewport */
+        right: var(--gutter); bottom: var(--gutter);
+        position: fixed; /* Fixe pour être toujours visible au scroll initial */
+    }
+
+    /* Menu burger et navigation mobile */
+    .menu-toggle {
+        display: flex; flex-direction: column; justify-content: space-around;
+        width: 28px; height: 22px; background: transparent; border: none;
+        cursor: pointer; padding: 0; z-index: 1001; /* Au-dessus du menu déroulant */
+    }
+    .menu-toggle span {
+        display: block; width: 100%; height: 2px; background: var(--text-primary);
+        border-radius: 2px; transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+    }
+    /* Animation du burger en croix */
+    .menu-toggle.active span:nth-child(1) { transform: rotate(45deg) translate(4px, 4px); }
+    .menu-toggle.active span:nth-child(2) { opacity: 0; }
+    .menu-toggle.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+    .main-nav ul {
+        display: none; /* Caché par défaut, affiché par JS */
+        position: fixed; /* Prend tout l'écran */
+        top: 0; left: 0; right: 0; bottom: 0; 
+        background-color: var(--bg-color); 
+        flex-direction: column; 
+        align-items: center; 
+        justify-content: center; 
+        padding: var(--gutter);
+        z-index: 1000; /* En dessous du bouton burger mais au-dessus du reste */
+    }
+    .main-nav ul.active { display: flex; } /* Affiché quand actif */
+    .main-nav ul li { text-align: center; margin: 1rem 0; }
+    .main-nav a { font-size: 1.2rem; } /* Liens plus grands pour le mobile */
+    
+    /* Ajustement du soulignement des titres h2 sur mobile */
+    /* Si le titre est left-aligned mais devient centré sur mobile, on le force au centre */
+    h2.wavy-underline.left-aligned-title::after { 
+        left: 50%; /* Centré */
+        transform-origin: center bottom;
+    }
+    .reveal-on-scroll.is-visible h2.wavy-underline.left-aligned-title::after,
+    h2.wavy-underline.is-visible.left-aligned-title::after { 
+        transform: translateX(-50%) scaleX(1); /* Assure le centrage de l'animation */
+        opacity: 1;
+    }
+
+    /* Grille des projets en une seule colonne (déjà le défaut, mais pour confirmer) */
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* Section "About" : image en dessous du texte */
+    .about-section .container {
+        display: flex; /* Ou grid avec une seule colonne */
+        flex-direction: column;
+    }
+     .about-section .about-image { 
+        order: 2; /* Image après le texte */
+        margin-top: var(--gutter);
+    }
+    .about-section .about-content {
+        order: 1; /* Texte avant l'image */
+    }
+}
+
+/* Styles pour desktop (à partir de 769px) */
+@media (min-width: 769px) {
+    /* Grille de projets sur deux colonnes */
+    .projects-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* Section "About" avec image à côté du texte */
+    .about-section .container {
+        display: grid;
+        grid-template-columns: 1.4fr 1fr; /* Texte plus large que l'image */
+        gap: calc(var(--gutter) * 2.5);
+        align-items: center;
+    }
+     .about-section .about-image { 
+        order: 1; /* Image à droite (ou selon l'ordre dans le HTML) */
+        margin-top:0;
+    }
+     .about-section .about-content {
+        order: 0; /* Texte à gauche */
+     }
+}
