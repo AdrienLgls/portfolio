@@ -615,7 +615,7 @@ a:hover, a:focus {
 
 /* =========== MODALE PROJET =========== */
 #projectModal { 
-    background-color: rgba(253, 248, 240, 0.9); /* Fond semi-transparent avec flou */
+    background-color: rgba(235, 235, 235, 0.9); /* Fond semi-transparent avec flou */
     backdrop-filter: blur(5px);
     /* display: none; est géré par JS, mais flex pour centrer si visible */
     display: flex; 
