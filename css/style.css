@@ -788,3 +788,34 @@ a:hover, a:focus {
         order: 0; /* Texte à gauche */
      }
 }
+
+/* =========== POPUP DE NOTIFICATION DE COPIE =========== */
+.copy-popup {
+    position: fixed;
+    bottom: 30px; /* Distance du bas de l'écran */
+    left: 50%;
+    transform: translateX(-50%) translateY(100px); /* Initialement en dehors (en bas) */
+    background-color: var(--text-primary); /* Fond sombre, bon contraste avec texte clair */
+    color: var(--bg-color); /* Texte clair */
+    padding: 12px 24px;
+    border-radius: 25px; /* Forme de pilule */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.25);
+    z-index: 3000; /* Au-dessus de tout le reste */
+    opacity: 0;
+    visibility: hidden; /* Caché et non interactif initialement */
+    font-size: 0.9rem;
+    font-weight: 500;
+    /* Transition douce pour l'apparition/disparition */
+    transition: opacity 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), 
+                transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), 
+                visibility 0s linear 0.4s; /* Délai pour visibility pour permettre la transition out */
+}
+
+.copy-popup.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0); /* Position finale */
+    transition: opacity 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), 
+                transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), 
+                visibility 0s linear 0s;
+}

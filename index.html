@@ -213,12 +213,13 @@
             <div class="container">
                 <h2 class="reveal-on-scroll wavy-underline centered-title">Contactez-moi</h2>
                 <p class="contact-intro reveal-on-scroll" data-delay="100">
-                    Une idée à concrétiser, une collaboration en vue ou simplement envie de discuter technologie et design ?
+                    Si vous avez une idée de projet, envisagez une collaboration, ou souhaitez simplement discuter, je suis à votre disposition.
                 </p>
-                <a href="mailto:adrien.leglise.pro@email.com" class="contact-button reveal-on-scroll" data-delay="200">Contactez-moi</a>
+                <!-- MODIFICATION ICI: appel à la nouvelle fonction JS -->
+                <a href="#" class="contact-button reveal-on-scroll" data-delay="200" onclick="copyEmailAndShowNotification('adrien.leglise2@gmail.com'); return false;">adrien.leglise2@gmail.com</a>
                 <div class="social-links reveal-on-scroll" data-delay="300">
                     <ul>
-                        <li><a href="https://www.linkedin.com/in/adrienleglise/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a></li>
+                        <li><a href="https://www.linkedin.com/in/adrien-leglise-b38b7b335/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a></li>
                         <li><a href="https://github.com/AdrienLgls" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a></li>
                     </ul>
                 </div>
@@ -248,6 +249,9 @@
         </div>
     </div>
     <!-- =========== PROJECT MODAL END =========== -->
+
+    <!-- AJOUT ICI: Popup de notification de copie -->
+    <div id="copyPopup" class="copy-popup">Email copié !</div>
 
     <!-- Script personnalisé (placé à la fin pour de meilleures performances) -->
     <script src="js/script.js"></script>

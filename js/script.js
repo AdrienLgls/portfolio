@@ -169,4 +169,97 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }
+
+    // =========================================================================
+    // Fonction pour copier l'email et afficher la notification de popup
+    // =========================================================================
+    // La fonction doit être accessible globalement si elle est appelée depuis l'attribut onclick dans le HTML.
+    // Donc, nous la définissons en dehors de l'écouteur 'DOMContentLoaded' ou nous l'attachons à l'objet window.
+    // Pour cet exemple, nous allons la rendre globale en l'attachant à window.
 });
+
+// Définir la fonction en dehors du DOMContentLoaded pour qu'elle soit dans la portée globale
+// si elle est appelée directement par l'attribut onclick de l'HTML
+function copyEmailAndShowNotification(emailText) {
+    // Vérifie si l'API Clipboard est supportée
+    if (!navigator.clipboard) {
+        // Fallback pour les navigateurs plus anciens ou contextes non sécurisés (HTTP)
+        try {
+            const textArea = document.createElement("textarea");
+            textArea.value = emailText;
+            textArea.style.position = "fixed";  // Empêche le défilement en haut
+            textArea.style.top = "0";
+            textArea.style.left = "0";
+            textArea.style.width = "2em";
+            textArea.style.height = "2em";
+            textArea.style.padding = "0";
+            textArea.style.border = "none";
+            textArea.style.outline = "none";
+            textArea.style.boxShadow = "none";
+            textArea.style.background = "transparent";
+            document.body.appendChild(textArea);
+            textArea.focus();
+            textArea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textArea);
+            
+            // Afficher le popup de succès
+            const popup = document.getElementById('copyPopup');
+            if (popup) {
+                popup.textContent = "Email copié !";
+                popup.style.backgroundColor = 'var(--text-primary)'; // Couleur de succès
+                popup.classList.add('show');
+                setTimeout(() => {
+                    popup.classList.remove('show');
+                }, 2500); // Masquer après 2.5 secondes
+            }
+            return; // Sortir de la fonction après la copie fallback
+
+        } catch (err) {
+            // Dans un cas réel, on pourrait afficher une alerte plus discrète que alert()
+            // alert("La copie automatique n'est pas supportée par votre navigateur. Veuillez copier l'email manuellement : " + emailText);
+            console.error('Fallback copy failed: ', err);
+            const popup = document.getElementById('copyPopup');
+            if (popup) {
+                popup.textContent = "Copie échouée. Essayez manuellement.";
+                popup.style.backgroundColor = 'var(--accent-primary)'; 
+                popup.classList.add('show');
+                setTimeout(() => {
+                    popup.classList.remove('show');
+                    setTimeout(() => { popup.style.backgroundColor = 'var(--text-primary)'; }, 400);
+                }, 3000);
+            }
+            return; // Sortir si le fallback échoue aussi
+        }
+    }
+
+    // Utilisation de l'API Clipboard moderne
+    navigator.clipboard.writeText(emailText).then(function() {
+        const popup = document.getElementById('copyPopup');
+        if (popup) {
+            popup.textContent = "Email copié !"; // Message de succès
+            popup.style.backgroundColor = 'var(--text-primary)'; // Assurer la couleur de succès
+            popup.classList.add('show');
+            // Masquer le popup après un délai
+            setTimeout(() => {
+                popup.classList.remove('show');
+            }, 2500); // Popup visible pendant 2.5 secondes
+        }
+    }).catch(function(err) {
+        console.error('Erreur lors de la copie de l\'email: ', err);
+        const popup = document.getElementById('copyPopup');
+        if (popup) {
+            popup.textContent = "Erreur de copie"; // Message d'erreur
+            popup.style.backgroundColor = 'var(--accent-primary)'; // Couleur d'erreur (rouge)
+            popup.classList.add('show');
+            // Masquer le popup après un délai
+            setTimeout(() => {
+                popup.classList.remove('show');
+                // Réinitialiser la couleur de fond après le masquage pour la prochaine notification
+                setTimeout(() => {
+                    popup.style.backgroundColor = 'var(--text-primary)';
+                }, 400); // Attendre la fin de la transition de masquage
+            }, 3000); // Popup d'erreur visible pendant 3 secondes
+        }
+    });
+}
