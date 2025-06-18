@@ -100,24 +100,24 @@ document.addEventListener('DOMContentLoaded', function() {
     // mettez-les dans votre dossier img/ et changez les chemins ici.
     const projectDetails = {
         modalHardis: { 
-            title: "Site Hardis Group (Détails)", 
-            image: "https://adrienlgls.github.io/portfolio/img/Hardis.png", // ou "img/hardis-detail.jpg"
-            description: "Développement d'interfaces web responsives et interactives pour le site vitrine du groupe Hardis. Ce projet a impliqué une collaboration étroite avec les équipes de design pour assurer une expérience utilisateur optimale et une présentation claire des différents pôles d'activité de l'entreprise." 
-        },
-        modalNutriscore: { 
-            title: "Analyse de Données Nutriscore (Détails)", 
-            image: "https://adrienlgls.github.io/portfolio/img/Nutriscore.png", // ou "img/nutriscore-detail.jpg"
-            description: "Exploration d'un dataset volumineux de produits alimentaires (Open Food Facts) à l'aide de SQL pour l'extraction et la préparation des données, puis avec le langage R (librairies dplyr, ggplot2) pour l'analyse statistique et la création de visualisations pertinentes (histogrammes, boxplots, etc.) afin de comprendre les facteurs déterminant le Nutriscore." 
+            title: "Artswipe (Détails)", 
+            image: "img/artswipe1.png", // ou "img/hardis-detail.jpg"
+            description: "Dans le cadre d'un projet universitaire, nous devions réaliser une application visant a promouvoir le patrimoine culturel. En équipe de 6, nous avons donc développé un site web recommandant des musées en fonction des préférences collectés. L application fonctionne à l aide d un algorithme qui recueil un certain nombre de préférences grace à un système de swipe, et, au bout de 10 swipes, propose un musée proche de chez l utilisateur et en fonction de ses gouts. Pour ma part, étant chef de projet, j ai particulièrement du travailler sur le cadrage de projet et la répartition des tâches. Cependant, j ai aussi beaucoup travaillé sur l aspect conception (modélisation des classes, des IHM) et le développement des interfaces en React." 
         },
         modalPresse: { 
             title: "Analyse Sémantique de la Presse (Détails)", 
-            image: "https://adrienlgls.github.io/portfolio/img/Presse.png", // ou "img/presse-detail.jpg"
-            description: "Application de techniques de Traitement Automatique du Langage Naturel (NLP) sur un corpus d'articles de presse. Utilisation de Python et des librairies NLTK/spaCy pour la tokenisation, lemmatisation, reconnaissance d'entités nommées (NER) et analyse de sentiment, dans le but d'identifier des thèmes émergents et des tendances." 
+            image: "img/ia.png", // ou "img/presse-detail.jpg"
+            description: "Exploration des concepts fondamentaux du Machine Learning incluant la mise en œuvre de modèles simples comme la régression linéaire et les k-plus proches voisins (k-NN). Entraînement d’un modèle de Deep Learning simulant l’atterrissage autonome d’une fusée sur la surface lunaire en 2D." 
+        },
+        modalNutriscore: { 
+            title: "Analyse de Données Nutriscore (Détails)", 
+            image: "img/Nutriscore.png", // ou "img/nutriscore-detail.jpg"
+            description: "Exploration d'un dataset volumineux de produits alimentaires (Open Food Facts) à l'aide de SQL pour l'extraction et la préparation des données, puis avec le langage R (librairies dplyr, ggplot2) pour l'analyse statistique et la création de visualisations pertinentes (histogrammes, boxplots, etc.) afin de comprendre les facteurs déterminant le Nutriscore." 
         },
         modalAI: { 
-            title: "Projet IA Concept (Détails)", 
+            title: "Réalisation d'un guide d'installation d'un serveur Debian", 
             image: "", // Pas d'image spécifique pour ce concept, ou mettez un placeholder
-            description: "Ce projet exploratoire vise à développer un prototype d'intelligence artificielle pour [Préciser l'objectif, ex: un système de recommandation simplifié, une classification d'images basique, ou l'analyse prédictive sur un petit dataset]. Les technologies ciblées sont Python, ainsi que les librairies Scikit-learn, TensorFlow ou PyTorch, selon la nature exacte du problème abordé. L'objectif est d'appliquer les concepts fondamentaux du machine learning et du deep learning à un cas concret." 
+            description: "Réalisation, en individuel, d'un guide d'installation d'un serveur Debian 12. Ce guide contient, explications et commandes, pour l'installation et la configuration du serveur, ainsi que, sur ce serveur, la configuration d'Apache, PostgreSQL, PHP et phpPgAdmin." 
         }
     };
     
