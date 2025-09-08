@@ -249,6 +249,9 @@ a:hover, a:focus {
     align-items: center;
     transition: background-color 0.3s ease, color 0.3s ease;
 }
+.main-nav a.contact-button-nav::after {
+    display: none; /* Supprimer le soulignement ondulé */
+}
 .main-nav a.contact-button-nav .arrow {
     margin-left: 0.4em;
     transition: transform 0.3s ease;
@@ -423,7 +426,7 @@ a:hover, a:focus {
 }
 
 /* =========== PROJECTS SECTION =========== */
-.projects-section .subtle-wave-container { /* Position spécifique des vagues pour cette section */
+.projects-section .subtle-wave-container.wave-bottom { /* Position spécifique de la vague du bas pour cette section */
      bottom: -5px; /* Léger décalage pour un meilleur raccord visuel */
      top: auto;
      transform: rotate(0deg); /* Pas de rotation pour la vague du bas */
@@ -710,6 +713,7 @@ a:hover, a:focus {
         display: flex; flex-direction: column; justify-content: space-around;
         width: 28px; height: 22px; background: transparent; border: none;
         cursor: pointer; padding: 0; z-index: 1001; /* Au-dessus du menu déroulant */
+        margin-left: auto; /* Pousse le bouton vers la droite */
     }
     .menu-toggle span {
         display: block; width: 100%; height: 2px; background: var(--text-primary);
@@ -732,6 +736,11 @@ a:hover, a:focus {
         z-index: 1000; /* En dessous du bouton burger mais au-dessus du reste */
     }
     .main-nav ul.active { display: flex; } /* Affiché quand actif */
+    
+    /* Étend le header sur toute la hauteur quand le menu est ouvert */
+    .site-header:has(.main-nav ul.active) {
+        height: 100%;
+    }
     .main-nav ul li { text-align: center; margin: 1rem 0; }
     .main-nav a { font-size: 1.2rem; } /* Liens plus grands pour le mobile */
     
