@@ -146,7 +146,7 @@ a:hover, a:focus {
 
 /* =========== HEADER =========== */
 .site-header {
-    padding: var(--gutter) 0;
+    padding: calc(var(--gutter) * 0.65) 0;
     position: absolute;
     width: 100%;
     top: 0;
@@ -206,14 +206,18 @@ a:hover, a:focus {
 .main-nav ul {
     list-style: none;
     display: flex;
+    align-items: center;
     gap: calc(var(--gutter) * 1.2); /* Espacement entre les liens */
 }
 .main-nav a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 36px;
     font-size: 0.85rem;
     font-weight: 500;
     color: var(--text-secondary);
     letter-spacing: 0.02em;
-    padding: 0.5rem 0;
+    padding: 0 0;
     position: relative; /* Pour le pseudo-élément de soulignement */
 }
 /* Soulignement vague personnalisé pour les liens de navigation */
@@ -243,10 +247,9 @@ a:hover, a:focus {
 .main-nav a.contact-button-nav {
     color: var(--accent-primary);
     border: 1.5px solid var(--accent-primary);
-    padding: 0.35rem 0.9rem;
+    min-height: 38px;
+    padding: 0 0.85rem;
     border-radius: 50px;
-    display: inline-flex;
-    align-items: center;
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 .main-nav a.contact-button-nav::after {
