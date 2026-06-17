@@ -51,7 +51,7 @@ document.addEventListener('DOMContentLoaded', function() {
     revealElements.forEach(el => {
         revealObserver.observe(el); // Observe chaque élément concerné
     });
-    
+
     // =========== STYLE DU HEADER AU SCROLL ===========
     const siteHeader = document.getElementById('siteHeader');
     // let lastScrollY = window.scrollY; // Non utilisé dans cette version du header
@@ -66,7 +66,7 @@ document.addEventListener('DOMContentLoaded', function() {
             // Le comportement de disparition/réapparition au scroll a été retiré pour ce style de header
         });
     }
-    
+
     // =========== MISE À JOUR DU LIEN ACTIF DANS LA NAVIGATION AU SCROLL ===========
     const sections = document.querySelectorAll('section[id]'); // Toutes les sections avec un ID
     function updateActiveLink() {
@@ -75,9 +75,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // Trouve la section actuellement visible en partant du bas
         while(--index >= 0 && window.scrollY + headerOffset < sections[index].offsetTop) {}
-        
+
         navLinkItems.forEach((link) => link.classList.remove('active-link')); // Retire 'active-link' de tous les liens
-        
+
         if (index >= 0 && sections[index]) { // Si une section est trouvée
           const activeSectionId = sections[index].id;
           const activeNavLink = document.querySelector(`.main-nav a[href="#${activeSectionId}"]`);
@@ -90,37 +90,57 @@ document.addEventListener('DOMContentLoaded', function() {
     updateActiveLink(); // Met à jour au chargement de la page
 
     // =========== GESTION DE LA MODALE PROJET ===========
-    const projectLinks = document.querySelectorAll('.project-link'); 
+    const projectLinks = document.querySelectorAll('.project-link');
     const modal = document.getElementById('projectModal');
     const modalBody = document.getElementById('modalBody'); // Le conteneur du contenu de la modale
-    const closeModalBtn = modal.querySelector('.close-modal-btn');
+    const closeModalBtn = modal ? modal.querySelector('.close-modal-btn') : null;
 
     // Données des projets (pourraient venir d'un JSON ou d'attributs data plus complexes)
     // Note: Les images sont des URL externes. Si vous voulez des images locales,
     // mettez-les dans votre dossier img/ et changez les chemins ici.
     const projectDetails = {
-        modalHardis: { 
-            title: "Artswipe (Détails)", 
+        modalHardis: {
+            title: "Artswipe (Détails)",
             image: "img/artswipe1.png", // ou "img/hardis-detail.jpg"
-            description: "Dans le cadre d'un projet universitaire, nous devions réaliser une application visant a promouvoir le patrimoine culturel. En équipe de 6, nous avons donc développé un site web recommandant des musées en fonction des préférences collectés. L application fonctionne à l aide d un algorithme qui recueil un certain nombre de préférences grace à un système de swipe, et, au bout de 10 swipes, propose un musée proche de chez l utilisateur et en fonction de ses gouts. Pour ma part, étant chef de projet, j ai particulièrement du travailler sur le cadrage de projet et la répartition des tâches. Cependant, j ai aussi beaucoup travaillé sur l aspect conception (modélisation des classes, des IHM) et le développement des interfaces en React." 
+            description: "Dans le cadre d'un projet universitaire, nous devions réaliser une application visant a promouvoir le patrimoine culturel. En équipe de 6, nous avons donc développé un site web recommandant des musées en fonction des préférences collectés. L application fonctionne à l aide d un algorithme qui recueil un certain nombre de préférences grace à un système de swipe, et, au bout de 10 swipes, propose un musée proche de chez l utilisateur et en fonction de ses gouts. Pour ma part, étant chef de projet, j ai particulièrement du travailler sur le cadrage de projet et la répartition des tâches. Cependant, j ai aussi beaucoup travaillé sur l aspect conception (modélisation des classes, des IHM) et le développement des interfaces en React."
         },
-        modalPresse: { 
-            title: "Analyse Sémantique de la Presse (Détails)", 
+        modalPresse: {
+            title: "Projet personnel machine learning",
             image: "img/ia.png", // ou "img/presse-detail.jpg"
-            description: "Exploration des concepts fondamentaux du Machine Learning incluant la mise en œuvre de modèles simples comme la régression linéaire et les k-plus proches voisins (k-NN). Entraînement d’un modèle de Deep Learning simulant l’atterrissage autonome d’une fusée sur la surface lunaire en 2D." 
+            description: "Exploration des concepts fondamentaux du Machine Learning incluant la mise en œuvre de modèles simples comme la régression linéaire et les k-plus proches voisins (k-NN). Entraînement d’un modèle de Deep Learning simulant l’atterrissage autonome d’une fusée sur la surface lunaire en 2D."
         },
-        modalNutriscore: { 
-            title: "Analyse de Données Nutriscore (Détails)", 
-            image: "img/Nutriscore.png", // ou "img/nutriscore-detail.jpg"
-            description: "Exploration d'un dataset volumineux de produits alimentaires (Open Food Facts) à l'aide de SQL pour l'extraction et la préparation des données, puis avec le langage R (librairies dplyr, ggplot2) pour l'analyse statistique et la création de visualisations pertinentes (histogrammes, boxplots, etc.) afin de comprendre les facteurs déterminant le Nutriscore." 
+        modalNutriscore: {
+            title: "Analyse de Données Nutriscore (Détails)",
+            image: "img/nutriscore.png", // ou "img/nutriscore-detail.jpg"
+            description: "Exploration d'un dataset volumineux de produits alimentaires (Open Food Facts) à l'aide de SQL pour l'extraction et la préparation des données, puis avec le langage R (librairies dplyr, ggplot2) pour l'analyse statistique et la création de visualisations pertinentes (histogrammes, boxplots, etc.) afin de comprendre les facteurs déterminant le Nutriscore."
         },
-        modalAI: { 
-            title: "Réalisation d'un guide d'installation d'un serveur Debian", 
-            image: "", // Pas d'image spécifique pour ce concept, ou mettez un placeholder
-            description: "Réalisation, en individuel, d'un guide d'installation d'un serveur Debian 12. Ce guide contient, explications et commandes, pour l'installation et la configuration du serveur, ainsi que, sur ce serveur, la configuration d'Apache, PostgreSQL, PHP et phpPgAdmin." 
+        modalAI: {
+            title: "Réalisation d'un guide d'installation d'un serveur Debian",
+            image: "img/debian.png",
+            description: "Réalisation, en individuel, d'un guide d'installation d'un serveur Debian 12. Ce guide contient, explications et commandes, pour l'installation et la configuration du serveur, ainsi que, sur ce serveur, la configuration d'Apache, PostgreSQL, PHP et phpPgAdmin."
+        },
+        modalElectricity: {
+            title: "Prédiction des prix négatifs de l'électricité",
+            image: "img/electricity-forecast.png",
+            description: "Projet de session réalisé à l'UQAC pendant l'hiver 2026. L'objectif était de prédire les épisodes de prix day-ahead négatifs sur le marché électrique danois à partir de séries temporelles issues d'Open Power System Data. Le travail a mobilisé un pipeline Python, du feature engineering temporel, une comparaison de modèles et une analyse critique des limites. Le meilleur scénario court terme utilise un Random Forest avec une average precision de 0,67 et un ROC-AUC de 0,97 sur le jeu de test."
+        },
+        modalIroneo: {
+            title: "Ironeo",
+            image: "img/ironeo.png",
+            description: "Ironeo est une plateforme éducative full-stack dédiée à la musculation et au fitness. Le projet regroupe des articles, des parcours d'apprentissage, une bibliothèque d'exercices, des programmes d'entraînement, un suivi de progression et une logique d'abonnement. Il m'a permis de travailler sur un produit complet : frontend React, backend Node.js/Express, base MongoDB, authentification, paiements, version mobile et contraintes de mise en production."
+        },
+        modalHyrid: {
+            title: "Site Hyrid",
+            image: "img/hyrid.png",
+            description: "Hyrid est l'entreprise que j'ai créée avec trois collaborateurs après mon BUT Informatique. Le site hyrid.fr présente notre studio produit et nos applications web spécialisées, dont Ironeo. Ce projet met en avant une autre facette de mon parcours : cadrage d'une offre, construction d'une identité, développement d'un site Next.js, SEO, mise en production et coordination avec une petite équipe."
+        },
+        modalCeaStage: {
+            title: "Stage CEA - Classification d'images de bactéries par IA",
+            image: "img/cea-stage.png",
+            description: "Stage de dix semaines au CEA Grenoble, au sein du projet européen SIMBLE. Mon travail portait sur l'amélioration d'un système d'IA capable d'identifier des espèces bactériennes à partir d'images obtenues par imagerie lensless. J'ai étudié le pipeline existant, préparé et nettoyé des jeux de données, automatisé plusieurs traitements en Python, expérimenté des modèles de Deep Learning avec PyTorch et exploré une nouvelle approche de classification à partir de signaux optiques temporels. Cette expérience m'a surtout fait progresser sur la rigueur expérimentale, la lecture de code scientifique existant, la documentation et l'autonomie dans un environnement de recherche."
         }
     };
-    
+
     if (modal && closeModalBtn && modalBody) {
         projectLinks.forEach(link => {
             link.addEventListener('click', (e) => {
@@ -130,8 +150,15 @@ document.addEventListener('DOMContentLoaded', function() {
 
                 if (details) {
                     // Met à jour le contenu de la modale
-                    modalBody.querySelector('h3').textContent = details.title;
+                    const titleElement = modalBody.querySelector('h3');
                     const imgElement = modalBody.querySelector('img');
+                    const descriptionElement = modalBody.querySelector('p');
+
+                    if (!titleElement || !imgElement || !descriptionElement) {
+                        return;
+                    }
+
+                    titleElement.textContent = details.title;
                     if(details.image && details.image !== "") { // Si une image est fournie
                         imgElement.src = details.image;
                         imgElement.alt = details.title; // Bon pour l'accessibilité
@@ -139,8 +166,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     } else {
                         imgElement.style.display = 'none'; // Cache l'élément image s'il n'y en a pas
                     }
-                    modalBody.querySelector('p').innerHTML = details.description; // Utilise innerHTML si la description peut contenir du HTML simple
-                    
+                    descriptionElement.textContent = details.description;
+
                     modal.style.display = 'flex'; // Affiche la modale (utilise flex pour le centrage CSS)
                     document.body.style.overflow = 'hidden'; // Empêche le scroll du body
                 }
@@ -156,30 +183,30 @@ document.addEventListener('DOMContentLoaded', function() {
         closeModalBtn.addEventListener('click', closeTheModal); // Ferme avec le bouton X
 
         // Ferme la modale en cliquant à l'extérieur de son contenu
-        modal.addEventListener('click', (e) => { 
+        modal.addEventListener('click', (e) => {
             if (e.target === modal) { // Si le clic est sur le fond de la modale (l'élément .modal lui-même)
                 closeTheModal();
             }
         });
 
         // Ferme la modale avec la touche "Échap"
-        document.addEventListener('keydown', (event) => { 
+        document.addEventListener('keydown', (event) => {
             if (event.key === "Escape" && modal.style.display === 'flex') {
                 closeTheModal();
             }
         });
     }
 
-    // =========================================================================
-    // Fonction pour copier l'email et afficher la notification de popup
-    // =========================================================================
-    // La fonction doit être accessible globalement si elle est appelée depuis l'attribut onclick dans le HTML.
-    // Donc, nous la définissons en dehors de l'écouteur 'DOMContentLoaded' ou nous l'attachons à l'objet window.
-    // Pour cet exemple, nous allons la rendre globale en l'attachant à window.
+    const emailButton = document.querySelector('[data-copy-email]');
+    if (emailButton) {
+        emailButton.addEventListener('click', (event) => {
+            event.preventDefault();
+            const email = emailButton.dataset.copyEmail || emailButton.textContent.trim();
+            copyEmailAndShowNotification(email);
+        });
+    }
 });
 
-// Définir la fonction en dehors du DOMContentLoaded pour qu'elle soit dans la portée globale
-// si elle est appelée directement par l'attribut onclick de l'HTML
 function copyEmailAndShowNotification(emailText) {
     // Vérifie si l'API Clipboard est supportée
     if (!navigator.clipboard) {
@@ -202,7 +229,7 @@ function copyEmailAndShowNotification(emailText) {
             textArea.select();
             document.execCommand('copy');
             document.body.removeChild(textArea);
-            
+
             // Afficher le popup de succès
             const popup = document.getElementById('copyPopup');
             if (popup) {
@@ -216,13 +243,11 @@ function copyEmailAndShowNotification(emailText) {
             return; // Sortir de la fonction après la copie fallback
 
         } catch (err) {
-            // Dans un cas réel, on pourrait afficher une alerte plus discrète que alert()
-            // alert("La copie automatique n'est pas supportée par votre navigateur. Veuillez copier l'email manuellement : " + emailText);
             console.error('Fallback copy failed: ', err);
             const popup = document.getElementById('copyPopup');
             if (popup) {
                 popup.textContent = "Copie échouée. Essayez manuellement.";
-                popup.style.backgroundColor = 'var(--accent-primary)'; 
+                popup.style.backgroundColor = 'var(--accent-primary)';
                 popup.classList.add('show');
                 setTimeout(() => {
                     popup.classList.remove('show');

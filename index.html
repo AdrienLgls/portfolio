@@ -11,7 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800;900&family=Inter:wght@300;400;500;600&family=Syne:wght@700;800&display=swap" rel="stylesheet">
 
     <!-- Font Awesome (Icônes) -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha384-PPIZEGYM1v8zp5Py7UjFb79S58UeqCL9pYVnVPURKEqvioPROaVAJKKLzvH2rDnI" crossorigin="anonymous">
 
     <!-- Feuille de style personnalisée -->
     <link rel="stylesheet" href="css/style.css">
@@ -26,7 +26,7 @@
                     <img src="img/homeDetour.png" alt="Logo Adrien Leglise - Accueil">
                 </a>
             </div>
-            <button class="menu-toggle" id="menuToggle" aria-label="Ouvrir le menu" aria-expanded="false">
+            <button type="button" class="menu-toggle" id="menuToggle" aria-label="Ouvrir le menu" aria-expanded="false">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -34,6 +34,7 @@
             <nav class="main-nav">
                 <ul id="navLinks">
                     <li><a href="#about" class="nav-link">À Propos</a></li>
+                    <li><a href="#skills" class="nav-link">Compétences</a></li>
                     <li><a href="#projects" class="nav-link">Projets</a></li>
                     <li><a href="#process" class="nav-link">Parcours</a></li>
                     <li><a href="#contact" class="nav-link contact-button-nav">Contactez-moi <span class="arrow">→</span></a></li>
@@ -68,7 +69,7 @@
             <div class="subtle-wave-container wave-bottom">
                 <div class="subtle-wave wave-back"></div>
                 <div class="subtle-wave wave-front"></div>
-            </div>            
+            </div>
         </section>
         <!-- =========== HERO SECTION END =========== -->
 
@@ -81,22 +82,60 @@
             <div class="container">
                 <div class="about-content reveal-on-scroll">
                     <h2 class="wavy-underline left-aligned-title">À Propos.</h2>
-                    <p>Bonjour, je m'appelle Adrien LEGLISE et je suis actuellement étudiant en BUT Informatique. Au cours de mes études, j'ai acquis des compétences solides en programmation avec le langage Java, en gestion des bases de données avec SQL, ainsi qu'en développement de sites web avec HTML et CSS.</p>
-                    <p>Je souhaite poursuivre mes études en école d'ingénieur ou en master afin de me spécialiser dans le domaine de l'intelligence artificielle, un domaine qui me passionne particulièrement.</p>
+                    <p>Bonjour, je m'appelle Adrien LEGLISE. Je viens de terminer mon BUT Informatique, enrichi par une année à l'international à l'UQAC, au Canada.</p>
+                    <p>Aujourd'hui, j'ai créé Hyrid avec trois collaborateurs. Nous concevons des applications web, des sites et des produits numériques spécialisés, en gardant une approche simple : comprendre le besoin, livrer proprement et améliorer avec les retours terrain.</p>
                 </div>
                 <div class="about-image reveal-on-scroll" data-delay="200">
                     <!-- Assurez-vous que cette image est dans votre dossier img/ -->
                     <img src="img/Moi.png" alt="Adrien Leglise">
                 </div>
             </div>
-            
+
             <div class="subtle-wave-container wave-bottom">
                 <div class="subtle-wave wave-back"></div>
-                <div class="subtle-wave wave-front"></div>    
+                <div class="subtle-wave wave-front"></div>
             </div>
 
         </section>
         <!-- =========== ABOUT SECTION END =========== -->
+
+        <!-- =========== SKILLS SECTION START =========== -->
+        <section class="section skills-section section-bandeau" id="skills">
+            <div class="subtle-wave-container wave-top">
+                <div class="subtle-wave wave-back"></div>
+                <div class="subtle-wave wave-front"></div>
+            </div>
+            <div class="container">
+                <h2 class="reveal-on-scroll wavy-underline centered-title">Compétences Acquises.</h2>
+                <div class="skills-grid">
+                    <div class="skill-panel reveal-on-scroll">
+                        <span class="skill-label">Compétences techniques</span>
+                        <h3>Analyser, préparer et modéliser des données</h3>
+                        <p>À l'UQAC, j'ai travaillé sur un projet de science des données autour des prix négatifs de l'électricité. J'ai manipulé des séries temporelles, préparé des variables métier et évalué des modèles de classification sur un problème déséquilibré.</p>
+                        <ul class="skill-list">
+                            <li>Python, pandas, scikit-learn</li>
+                            <li>Feature engineering temporel</li>
+                            <li>SQL, R et visualisation de données</li>
+                        </ul>
+                    </div>
+                    <div class="skill-panel reveal-on-scroll" data-delay="150">
+                        <span class="skill-label">Compétences transversales</span>
+                        <h3>Travailler dans un cadre nouveau et collectif</h3>
+                        <p>L'année à l'international m'a appris à m'adapter rapidement à une nouvelle organisation de cours, à clarifier mon rôle dans une équipe et à rendre mon travail compréhensible pour les autres membres du projet.</p>
+                        <ul class="skill-list">
+                            <li>Autonomie et adaptation interculturelle</li>
+                            <li>Communication technique et restitution</li>
+                            <li>Organisation, documentation et esprit critique</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="subtle-wave-container wave-bottom">
+                <div class="subtle-wave wave-back"></div>
+                <div class="subtle-wave wave-front"></div>
+            </div>
+        </section>
+        <!-- =========== SKILLS SECTION END =========== -->
 
         <!-- =========== PROJECTS SECTION START =========== -->
         <section class="section projects-section " id="projects">
@@ -109,6 +148,62 @@
                 <div class="projects-grid">
                     <!-- Projet 1 -->
                     <div class="project-card reveal-on-scroll">
+                        <a href="#" class="project-link" data-modal-id="modalElectricity">
+                            <div class="project-image-wrapper">
+                                <img src="img/electricity-forecast.png" alt="Comparaison des horizons de prédiction des prix négatifs">
+                            </div>
+                            <div class="project-content">
+                                <h3>Prédiction des prix négatifs de l'électricité</h3>
+                                <p class="project-description">Projet UQAC de science des données visant à anticiper les épisodes de prix day-ahead négatifs sur le marché électrique danois.</p>
+                                <div class="project-tech"><span>Python</span><span>Data Science</span><span>Machine Learning</span></div>
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- Projet 2 -->
+                    <div class="project-card reveal-on-scroll" data-delay="150">
+                        <a href="#" class="project-link" data-modal-id="modalIroneo">
+                            <div class="project-image-wrapper">
+                                <img src="img/ironeo.png" alt="Capture de la page d'accueil Ironeo">
+                            </div>
+                            <div class="project-content">
+                                <h3>Ironeo</h3>
+                                <p class="project-description">Plateforme full-stack dédiée à la musculation : contenus éducatifs, programmes, suivi des séances, progression et abonnement.</p>
+                                <div class="project-tech"><span>React</span><span>Node.js</span><span>MongoDB</span><span>Mobile</span></div>
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- Projet 3 -->
+                    <div class="project-card reveal-on-scroll" data-delay="300">
+                        <a href="#" class="project-link" data-modal-id="modalHyrid">
+                            <div class="project-image-wrapper">
+                                <img src="img/hyrid.png" alt="Capture de la page d'accueil Hyrid">
+                            </div>
+                            <div class="project-content">
+                                <h3>Site Hyrid</h3>
+                                <p class="project-description">Site vitrine de l'entreprise créée avec mes collaborateurs pour présenter nos applications web spécialisées et notre studio produit.</p>
+                                <div class="project-tech"><span>Next.js</span><span>TypeScript</span><span>SEO</span></div>
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- Projet 4 -->
+                    <div class="project-card reveal-on-scroll" data-delay="150">
+                        <a href="#" class="project-link" data-modal-id="modalCeaStage">
+                            <div class="project-image-wrapper">
+                                <img src="img/cea-stage.png" alt="Dispositif d'imagerie lensless utilisé pour observer des colonies bactériennes">
+                            </div>
+                            <div class="project-content">
+                                <h3>Stage CEA - IA et bactéries</h3>
+                                <p class="project-description">Stage au CEA Grenoble autour du projet SIMBLE : préparation de données lensless et optimisation de modèles IA pour identifier des espèces bactériennes.</p>
+                                <div class="project-tech"><span>Python</span><span>PyTorch</span><span>Deep Learning</span><span>Vision</span></div>
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- Projet 5 -->
+                    <div class="project-card reveal-on-scroll" data-delay="300">
                         <a href="#" class="project-link" data-modal-id="modalHardis">
                             <div class="project-image-wrapper">
                                 <!-- Mettez le vrai chemin de l'image ou laissez pour JS -->
@@ -121,8 +216,9 @@
                             </div>
                         </a>
                     </div>
-                    <!-- Projet 2 -->
-                    <div class="project-card reveal-on-scroll" data-delay="300">
+
+                    <!-- Projet 6 -->
+                    <div class="project-card reveal-on-scroll" data-delay="150">
                         <a href="#" class="project-link" data-modal-id="modalPresse">
                             <div class="project-image-wrapper">
                                 <img src="img/ia.png" alt="Analyse Presse">
@@ -135,8 +231,8 @@
                         </a>
                     </div>
 
-                    <!-- Projet 3 -->
-                    <div class="project-card reveal-on-scroll" data-delay="150">
+                    <!-- Projet 7 -->
+                    <div class="project-card reveal-on-scroll" data-delay="300">
                          <a href="#" class="project-link" data-modal-id="modalNutriscore">
                             <div class="project-image-wrapper">
                                 <img src="img/nutriscore.png" alt="Analyse Nutriscore">
@@ -148,21 +244,21 @@
                             </div>
                         </a>
                     </div>
-                    
-                    <!-- Projet 4 -->
-                    <div class="project-card reveal-on-scroll" data-delay="300">
-                        <a href="#" class="project-link" data-modal-id="modalPresse">
+
+                    <!-- Projet 8 -->
+                    <div class="project-card reveal-on-scroll" data-delay="150">
+                        <a href="#" class="project-link" data-modal-id="modalAI">
                             <div class="project-image-wrapper">
-                                <img src="img/debian.png" alt="Analyse Presse">
+                                <img src="img/debian.png" alt="Guide Debian">
                             </div>
                             <div class="project-content">
                                 <h3>Réalisation d'un guide d'installation d'un serveur Debian</h3>
                                 <p class="project-description">Réalisation d'un guide d'installation d'un serveur Debian 12.</p>
-                                <div class="project-tech"><span>Python</span><span>NLP</span><span>SQL</span></div>
+                                <div class="project-tech"><span>Linux</span><span>Apache</span><span>PostgreSQL</span></div>
                             </div>
                         </a>
                     </div>
-                    
+
                 </div>
             </div>
             <div class="subtle-wave-container wave-bottom">
@@ -181,21 +277,31 @@
             <div class="container">
                 <h2 class="reveal-on-scroll wavy-underline centered-title">Mon Parcours.</h2>
                 <div class="process-steps">
-                     <div class="process-step reveal-on-scroll">
-                        <span class="step-number">01.</span>
-                        <h3>Mon Bac</h3>
-                        <p>J'ai obtenu un baccalauréat général avec les spécialités Mathématiques et Numérique et Sciences Informatiques (NSI).</p>
-                    </div>
-                    <div class="process-step reveal-on-scroll" data-delay="150">
-                        <span class="step-number">02.</span>
-                        <h3>Mon BUT</h3>
-                        <p>Actuellement, je suis étudiant en BUT Informatique à Grenoble. J'y apprends la programmation, la gestion de bases de données et le développement web.</p>
-                    </div>
-                    <div class="process-step reveal-on-scroll" data-delay="300">
-                        <span class="step-number">03.</span>
-                        <h3>Mon Futur</h3>
-                        <p>Mon objectif est de continuer mes études en école d'ingénieur ou en master. Je souhaite me spécialiser dans l'intelligence artificielle (IA), un domaine qui me passionne et où je veux m'investir.</p>
-                    </div>
+	                     <div class="process-step reveal-on-scroll">
+	                        <span class="step-number">01.</span>
+	                        <h3>Mon Bac</h3>
+	                        <p>J'ai obtenu un baccalauréat général avec les spécialités Mathématiques et Numérique et Sciences Informatiques (NSI).</p>
+	                    </div>
+	                    <div class="process-step reveal-on-scroll" data-delay="150">
+	                        <span class="step-number">02.</span>
+	                        <h3>Mon BUT Informatique</h3>
+	                        <p>J'ai terminé mon BUT Informatique à Grenoble, où j'ai consolidé mes bases en développement web, bases de données, gestion de projet et programmation.</p>
+	                    </div>
+	                    <div class="process-step reveal-on-scroll" data-delay="300">
+	                        <span class="step-number">03.</span>
+	                        <h3>Mon stage au CEA</h3>
+	                        <p>Au CEA Grenoble, j'ai travaillé sur un projet d'IA appliqué à la classification d'images de bactéries, avec un contexte scientifique exigeant et des données issues de l'imagerie lensless.</p>
+	                    </div>
+	                    <div class="process-step reveal-on-scroll" data-delay="450">
+	                        <span class="step-number">04.</span>
+	                        <h3>Mon année à l'UQAC</h3>
+	                        <p>J'ai effectué une année à l'international au Canada, avec des projets orientés data, web avancé, mobile et gestion de projet.</p>
+	                    </div>
+	                    <div class="process-step reveal-on-scroll" data-delay="600">
+	                        <span class="step-number">05.</span>
+	                        <h3>Hyrid et mes projets actuels</h3>
+	                        <p>Après le BUT, j'ai créé Hyrid avec trois collaborateurs. Nous développons des sites, des applications web et des produits spécialisés comme Ironeo.</p>
+	                    </div>
                 </div>
             </div>
             <div class="subtle-wave-container wave-bottom">
@@ -216,12 +322,11 @@
                 <p class="contact-intro reveal-on-scroll" data-delay="100">
                     Si vous avez une idée de projet, envisagez une collaboration, ou souhaitez simplement discuter, je suis à votre disposition.
                 </p>
-                <!-- MODIFICATION ICI: appel à la nouvelle fonction JS -->
-                <a href="#" class="contact-button reveal-on-scroll" data-delay="200" onclick="copyEmailAndShowNotification('adrien.leglise2@gmail.com'); return false;">adrien.leglise2@gmail.com</a>
+                <a href="#" class="contact-button reveal-on-scroll" data-delay="200" data-copy-email="adrien.leglise2@gmail.com">adrien.leglise2@gmail.com</a>
                 <div class="social-links reveal-on-scroll" data-delay="300">
                     <ul>
-                        <li><a href="https://www.linkedin.com/in/adrien-leglise-b38b7b335/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a></li>
-                        <li><a href="https://github.com/AdrienLgls" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a></li>
+                        <li><a href="https://www.linkedin.com/in/adrien-leglise-b38b7b335/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a></li>
+                        <li><a href="https://github.com/AdrienLgls" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github"></i></a></li>
                     </ul>
                 </div>
             </div>
@@ -240,7 +345,7 @@
     <!-- =========== PROJECT MODAL START =========== -->
     <div id="projectModal" class="modal" style="display:none;">
         <div class="modal-content">
-            <button class="close-modal-btn">×</button>
+            <button type="button" class="close-modal-btn">×</button>
             <div id="modalBody">
                 <h3>Titre du Projet</h3>
                 <!-- L'image sera remplacée par JS, vous pouvez mettre un placeholder local si besoin -->

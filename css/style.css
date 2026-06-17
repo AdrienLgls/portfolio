@@ -1,13 +1,13 @@
 /* =========== VARIABLES CSS =========== */
 :root {
-    --bg-color: #FFFFFF; 
-    --text-primary: #1A1A1A; 
-    --text-secondary: #5B5B5B; 
-    --accent-primary: #F0122D; 
+    --bg-color: #FFFFFF;
+    --text-primary: #1A1A1A;
+    --text-secondary: #5B5B5B;
+    --accent-primary: #F0122D;
     --card-bg-color: #FFFFFF; /* Utilisé pour les cartes projets et modale */
     --border-color: rgba(0, 0, 0, 0.1);
-    
-    --wave-fill-back: rgba(0,0,0,0.03); 
+
+    --wave-fill-back: rgba(0,0,0,0.03);
     --wave-fill-front: rgba(0,0,0,0.05);
 
     --font-hero-title: 'Playfair Display', serif; /* Pour le H1 du Hero */
@@ -48,7 +48,7 @@ body {
     margin-right: auto;
     padding-left: var(--gutter);
     padding-right: var(--gutter);
-    position: relative; 
+    position: relative;
     z-index: 2; /* Pour être au-dessus des vagues de section */
 }
 
@@ -61,7 +61,7 @@ h1, h2, h3, h4, h5, h6 {
 /* --- Typographie Spécifique --- */
 .hero-section h1 {
     font-family: var(--font-hero-title);
-    font-size: clamp(3.5rem, 9vw, 7.5rem); 
+    font-size: clamp(3.5rem, 9vw, 7.5rem);
     font-weight: 800;
     line-height: 1;
     letter-spacing: -0.03em;
@@ -78,9 +78,9 @@ h2 { /* Titres de section */
     font-family: var(--font-section-title);
     font-size: clamp(2.2rem, 5vw, 3.5rem);
     font-weight: 700;
-    margin-bottom: 2.5rem; 
+    margin-bottom: 2.5rem;
     position: relative;
-    padding-bottom: 0.8rem; 
+    padding-bottom: 0.8rem;
     text-align: center;
 }
 
@@ -89,9 +89,9 @@ h2.wavy-underline::after {
     content: '';
     position: absolute;
     bottom: 0;
-    left: 50%; 
-    transform: translateX(-50%) scaleX(0); 
-    width: 100px; 
+    left: 50%;
+    transform: translateX(-50%) scaleX(0);
+    width: 100px;
     height: 10px;
     /* SVG pour l'ondulation, couleur encodée pour stroke */
     background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 10"><path d="M0,5 Q25,-2 50,5 T100,5" fill="none" stroke="%23F0122D" stroke-width="1.5"/></svg>');
@@ -105,22 +105,22 @@ h2.wavy-underline::after {
 /* Pour les titres alignés à gauche, ajuster l'origine de la transformation */
 h2.wavy-underline.left-aligned-title::after {
     left: 0;
-    transform: scaleX(0); 
+    transform: scaleX(0);
     transform-origin: left bottom;
 }
 /* Animation du soulignement au scroll/visibilité */
 .reveal-on-scroll.is-visible h2.wavy-underline::after,
 h2.wavy-underline.is-visible::after {
-    transform: translateX(-50%) scaleX(1); 
+    transform: translateX(-50%) scaleX(1);
     opacity: 1;
 }
 .reveal-on-scroll.is-visible h2.wavy-underline.left-aligned-title::after,
 h2.wavy-underline.is-visible.left-aligned-title::after {
-    transform: scaleX(1); 
+    transform: scaleX(1);
     opacity: 1;
 }
 
-h3 { 
+h3 {
     font-family: var(--font-card-title);
     font-size: clamp(1.2rem, 2.2vw, 1.6rem);
     font-weight: 700;
@@ -147,7 +147,7 @@ a:hover, a:focus {
 /* =========== HEADER =========== */
 .site-header {
     padding: var(--gutter) 0;
-    position: absolute; 
+    position: absolute;
     width: 100%;
     top: 0;
     left: 0;
@@ -191,16 +191,16 @@ a:hover, a:focus {
 /*
 .site-logo a {
     display: block;
-    color: var(--accent-primary); 
+    color: var(--accent-primary);
 }
 .site-logo svg {
     width: 45px;
     height: auto;
     fill: currentColor;
-    transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+    transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 .site-logo a:hover svg {
-    transform: rotate(-7deg) scale(1.08) translateY(-1px); 
+    transform: rotate(-7deg) scale(1.08) translateY(-1px);
 } */
 
 .main-nav ul {
@@ -217,18 +217,18 @@ a:hover, a:focus {
     position: relative; /* Pour le pseudo-élément de soulignement */
 }
 /* Soulignement vague personnalisé pour les liens de navigation */
-.main-nav a::after { 
+.main-nav a::after {
     content: '';
     position: absolute;
     bottom: 0;
     left: 0;
     width: 100%;
-    height: 6px; 
+    height: 6px;
     background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 6"><path d="M0,3 Q12.5,0 25,3 T50,3" fill="none" stroke="%23F0122D" stroke-width="1.2"/></svg>');
     background-repeat: no-repeat;
-    background-size: 100% 100%; 
+    background-size: 100% 100%;
     opacity: 0;
-    transform: scaleX(0.8) translateY(4px); 
+    transform: scaleX(0.8) translateY(4px);
     transform-origin: center bottom;
     transition: opacity 0.3s ease-out, transform 0.4s cubic-bezier(0.23, 1, 0.32, 1);
 }
@@ -258,7 +258,7 @@ a:hover, a:focus {
 }
 .main-nav a.contact-button-nav:hover {
     background-color: var(--accent-primary);
-    color: var(--bg-color); 
+    color: var(--bg-color);
     opacity: 1;
 }
  .main-nav a.contact-button-nav:hover .arrow {
@@ -272,20 +272,21 @@ a:hover, a:focus {
 
 /* =========== SECTIONS GÉNÉRIQUES =========== */
 .section {
-    padding-top: 100px; 
+    padding-top: 100px;
     padding-bottom: 70px;
     position: relative; /* Pour les vagues et autres éléments positionnés */
     overflow: hidden;  /* Empêche les vagues de créer des barres de défilement */
     z-index:0; /* Contexte d'empilement pour les vagues */
+    scroll-margin-top: 110px;
 }
 
 /* Sections "bandeau" avec fond transparent (héritent du body) */
 .section-bandeau {
-    background-color: transparent; 
+    background-color: transparent;
     border-top: none;
     border-bottom: none;
     /* Ajustement du padding pour que les vagues servent de délimiteurs visuels */
-    padding-top: calc(100px + 40px); 
+    padding-top: calc(100px + 40px);
     padding-bottom: calc(70px + 40px);
 }
 
@@ -294,22 +295,22 @@ a:hover, a:focus {
     position: absolute;
     left: 0;
     width: 100%;
-    height: 80px; 
+    height: 80px;
     overflow: hidden;
     pointer-events: none; /* Les vagues ne doivent pas être interactives */
 }
-.subtle-wave-container.wave-top { 
-    top: 0; 
+.subtle-wave-container.wave-top {
+    top: 0;
     transform: rotate(180deg); /* Inverse la vague pour le haut */
     z-index: 0; /* Derrière le contenu de la section mais sur le fond de la section */
 }
-.subtle-wave-container.wave-bottom { 
-     bottom: 0; 
+.subtle-wave-container.wave-bottom {
+     bottom: 0;
      z-index: 0;
 }
 /* Pour les sections qui ne sont PAS .section-bandeau, les vagues sont derrière le fond de la section */
 .section:not(.section-bandeau) .subtle-wave-container {
-    z-index: -1; 
+    z-index: -1;
 }
 
 /* Style des vagues SVG animées */
@@ -325,13 +326,13 @@ a:hover, a:focus {
     /* SVG pour la vague arrière, couleur encodée dans 'fill' */
     background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M0,66 C200,130 350,0 600,60 C850,130 1000,0 1200,60 L1200,120 L0,120 Z" fill="rgba(0,0,0,0.03)"/></svg>');
     animation: subtle-wave-flow 45s linear infinite;
-    z-index: 1; 
+    z-index: 1;
 }
 .subtle-wave.wave-front {
     /* SVG pour la vague avant, couleur encodée dans 'fill' */
     background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M0,80 C150,20 400,130 600,80 C800,20 1050,130 1200,80 L1200,120 L0,120 Z" fill="rgba(0,0,0,0.02)"/></svg>');
     animation: subtle-wave-flow 35s linear infinite reverse; /* Direction inverse pour un effet plus naturel */
-    z-index: 2; 
+    z-index: 2;
 }
 
 /* Animation de défilement horizontal pour les vagues */
@@ -344,11 +345,11 @@ a:hover, a:focus {
 .hero-section {
     min-height: 95vh; /* Prend au moins toute la hauteur de l'écran */
     display: flex;
-    align-items: center; 
+    align-items: center;
     position: relative;
-    padding-top: 100px; 
+    padding-top: 100px;
     padding-bottom: 50px;
-    overflow: hidden; 
+    overflow: hidden;
 }
 .hero-content-wrapper { /* Wrapper pour le texte et le cercle de scroll */
     position: relative;
@@ -362,16 +363,16 @@ a:hover, a:focus {
 .hero-image-container {
     position: absolute;
     top: 50%;
-    right: var(--gutter); 
+    right: var(--gutter);
     transform: translateY(-50%);
-    width: 400px; 
-    height: 400px; 
+    width: 400px;
+    height: 400px;
     background-color: #FFFFFF; /* Fond pour l'image */
     z-index: 1; /* Derrière le contenu texte */
     background-image: url('../img/homeDetour.png'); /* Image de fond - ajustez le chemin */
-    background-size: cover; 
-    background-position: center; 
-    display: flex; 
+    background-size: cover;
+    background-position: center;
+    display: flex;
     align-items: center;
     justify-content: center;
     border-radius: 4px;
@@ -384,8 +385,8 @@ a:hover, a:focus {
 .scroll-down-circle {
     position: absolute;
     bottom: 30px;
-    right: calc(var(--gutter) + 80px); 
-    width: 90px; 
+    right: calc(var(--gutter) + 80px);
+    width: 90px;
     height: 90px;
     border: 1.5px solid var(--accent-primary);
     border-radius: 50%;
@@ -410,19 +411,19 @@ a:hover, a:focus {
 
 
 /* =========== ABOUT SECTION =========== */
-.about-section .about-image img { 
+.about-section .about-image img {
     width: 100%;
-    max-width: 400px; 
+    max-width: 400px;
     height: auto;
     object-fit: cover;
-    border-radius: 4px; 
-    margin: var(--gutter) auto 0 auto; 
+    border-radius: 4px;
+    margin: var(--gutter) auto 0 auto;
     display: block;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.06); 
+    box-shadow: 0 8px 20px rgba(0,0,0,0.06);
 }
-.about-content strong { 
-    color: var(--text-primary); 
-    font-weight: 600; 
+.about-content strong {
+    color: var(--text-primary);
+    font-weight: 600;
 }
 
 /* =========== PROJECTS SECTION =========== */
@@ -445,7 +446,7 @@ a:hover, a:focus {
     border: 1px solid var(--border-color);
     display: flex;
     flex-direction: column; /* Contenu vertical */
-    box-shadow: 0 4px 12px rgba(0,0,0,0.04); 
+    box-shadow: 0 4px 12px rgba(0,0,0,0.04);
 }
 .project-card:hover {
     transform: translateY(-6px); /* Effet de lévitation */
@@ -459,11 +460,11 @@ a:hover, a:focus {
     background-color: var(--accent-secondary, #e0e0e0); /* Couleur de fond si image absente */
 }
 .project-image-wrapper img {
-    position: absolute; 
-    top: 0; 
-    left: 0; 
-    width: 100%; 
-    height: 100%; 
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     object-fit: cover; /* S'assure que l'image couvre bien sans se déformer */
     transition: transform 0.4s ease;
 }
@@ -471,23 +472,23 @@ a:hover, a:focus {
     transform: scale(1.03); /* Léger zoom sur l'image au survol */
 }
 .project-content {
-    padding: var(--gutter); 
+    padding: var(--gutter);
     flex-grow: 1; /* Permet au contenu de prendre l'espace restant */
     display: flex;
     flex-direction: column;
 }
-.project-description { 
-    font-size: 0.9rem; 
-    margin-bottom: 1rem; 
+.project-description {
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
     flex-grow: 1; /* Pousse les technos en bas */
 }
-.project-tech { 
-    margin-bottom: 1rem; 
+.project-tech {
+    margin-bottom: 1rem;
 }
 .project-tech span { /* Badges pour les technologies */
-    font-size: 0.7rem; 
+    font-size: 0.7rem;
     color: var(--text-secondary);
-    background-color: rgba(0,0,0, 0.03); 
+    background-color: rgba(0,0,0, 0.03);
     padding: 0.25em 0.7em;
     border-radius: 12px;
     margin-right: 0.4em;
@@ -498,114 +499,161 @@ a:hover, a:focus {
     border: 1px solid rgba(0,0,0,0.05);
 }
 
+/* =========== SKILLS SECTION =========== */
+.skills-section {
+    text-align: center;
+}
+.skills-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: calc(var(--gutter) * 1.5);
+    text-align: left;
+}
+.skill-panel {
+    background-color: var(--bg-color);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    padding: var(--gutter);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+}
+.skill-label {
+    display: inline-block;
+    margin-bottom: 0.8rem;
+    color: var(--accent-primary);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+.skill-panel h3 {
+    font-size: clamp(1.1rem, 2vw, 1.35rem);
+}
+.skill-panel p {
+    font-size: 0.95rem;
+}
+.skill-list {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+.skill-list li {
+    color: var(--text-secondary);
+    background-color: rgba(0,0,0, 0.03);
+    border: 1px solid rgba(0,0,0,0.05);
+    border-radius: 12px;
+    padding: 0.3em 0.75em;
+    font-size: 0.78rem;
+}
+
 /* =========== PROCESS SECTION =========== */
-.process-section { 
-    text-align: center; 
+.process-section {
+    text-align: center;
 }
 .process-steps {
     display: grid;
     /* Grille responsive: s'adapte au nombre d'éléments, min 260px de large */
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); 
-    gap: calc(var(--gutter) * 1.5); 
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: calc(var(--gutter) * 1.5);
     margin-top: 2.5rem;
     text-align: left; /* Contenu des étapes aligné à gauche */
 }
-.process-step { 
-    padding: var(--gutter); 
-    border: 1px solid var(--border-color); 
-    border-radius: 6px; 
+.process-step {
+    padding: var(--gutter);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
     background-color: var(--bg-color); /* Léger contraste avec le fond de la section-bandeau */
-    box-shadow: 0 4px 12px rgba(0,0,0,0.03); 
+    box-shadow: 0 4px 12px rgba(0,0,0,0.03);
 }
-.process-step .step-number { 
-    font-family: var(--font-body); 
-    font-size: 0.85rem; 
-    font-weight: 600; 
-    color: var(--accent-primary); 
-    margin-bottom: 0.4rem; 
-    display: block; 
+.process-step .step-number {
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--accent-primary);
+    margin-bottom: 0.4rem;
+    display: block;
 }
-.process-step h3 { 
-    font-size: 1.2rem; 
-    color: var(--text-primary); 
-    margin-bottom: 0.5rem; 
-    font-family: var(--font-card-title); 
+.process-step h3 {
+    font-size: 1.2rem;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+    font-family: var(--font-card-title);
 }
-.process-step p { 
-    font-size: 0.9rem; 
-    margin-bottom: 0; 
+.process-step p {
+    font-size: 0.9rem;
+    margin-bottom: 0;
 }
 
 /* =========== CONTACT SECTION =========== */
-.contact-section { 
-    text-align: center; 
+.contact-section {
+    text-align: center;
     padding-bottom: 100px; /* Plus de padding en bas */
 }
  .contact-section .subtle-wave-container { /* Vague du haut uniquement pour cette section */
     top: 0;
     bottom:auto;
     transform: rotate(180deg);
-    z-index: -1; 
+    z-index: -1;
  }
-.contact-section .contact-intro { 
+.contact-section .contact-intro {
     max-width: 55ch; /* Limite la largeur pour la lisibilité */
-    margin-left: auto; 
-    margin-right: auto; 
-    margin-bottom: 2rem; 
-    font-size:1.05rem; 
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 2rem;
+    font-size:1.05rem;
 }
 .contact-button {
     font-family: var(--font-body);
-    font-size: 1rem; 
-    font-weight: 500; 
-    background-color: var(--accent-primary); 
+    font-size: 1rem;
+    font-weight: 500;
+    background-color: var(--accent-primary);
     color: var(--bg-color);
-    padding: 0.8em 2.2em; 
-    border-radius: 50px; 
+    padding: 0.8em 2.2em;
+    border-radius: 50px;
     transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
-    display: inline-block; 
-    margin-bottom: 2.5rem; 
+    display: inline-block;
+    margin-bottom: 2.5rem;
     border: 1px solid var(--accent-primary);
 }
-.contact-button:hover { 
-    background-color: transparent; 
-    color: var(--accent-primary); 
+.contact-button:hover {
+    background-color: transparent;
+    color: var(--accent-primary);
     transform: translateY(-3px); /* Léger soulèvement */
 }
-.social-links ul { 
-    list-style: none; 
-    display: flex; 
-    justify-content: center; 
-    gap: calc(var(--gutter) * 1.5); 
+.social-links ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: calc(var(--gutter) * 1.5);
 }
-.social-links a { 
-    color: var(--text-secondary); 
-    font-size: 1.2rem; 
+.social-links a {
+    color: var(--text-secondary);
+    font-size: 1.2rem;
 }
-.social-links a:hover { 
-    color: var(--accent-primary); 
+.social-links a:hover {
+    color: var(--accent-primary);
 }
 
 /* =========== FOOTER =========== */
-.site-footer { 
-    text-align: center; 
-    padding: calc(var(--gutter) * 1.5) 0; 
-    border-top: 1px solid var(--border-color); 
+.site-footer {
+    text-align: center;
+    padding: calc(var(--gutter) * 1.5) 0;
+    border-top: 1px solid var(--border-color);
     position:relative; /* Pour s'assurer qu'il est au-dessus de tout élément flottant */
-    z-index:5; 
+    z-index:5;
     margin-top: 30px; /* Espace avant le footer */
 }
-.site-footer p { 
-    font-size: 0.8rem; 
-    color: var(--text-secondary); 
-    margin-bottom: 0.2rem; 
+.site-footer p {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    margin-bottom: 0.2rem;
 }
 
 /* =========== ANIMATIONS AU SCROLL =========== */
 .reveal-on-scroll {
     opacity: 0;
-    filter: blur(4px); 
-    transform: translateY(30px) scale(0.98); 
+    filter: blur(4px);
+    transform: translateY(30px) scale(0.98);
     transition: opacity 0.7s cubic-bezier(0.215, 0.610, 0.355, 1.000),
                 transform 0.7s cubic-bezier(0.215, 0.610, 0.355, 1.000),
                 filter 0.6s cubic-bezier(0.215, 0.610, 0.355, 1.000) 0.1s; /* Léger délai sur le filtre */
@@ -617,11 +665,11 @@ a:hover, a:focus {
 }
 
 /* =========== MODALE PROJET =========== */
-#projectModal { 
+#projectModal {
     background-color: rgba(235, 235, 235, 0.9); /* Fond semi-transparent avec flou */
     backdrop-filter: blur(5px);
     /* display: none; est géré par JS, mais flex pour centrer si visible */
-    display: flex; 
+    display: flex;
     align-items: center;
     justify-content: center;
     position: fixed;
@@ -629,9 +677,9 @@ a:hover, a:focus {
     z-index: 2000; /* Au-dessus de tout */
 }
 #projectModal .modal-content {
-    background-color: var(--card-bg-color); 
-    border: 1px solid var(--border-color); 
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1); 
+    background-color: var(--card-bg-color);
+    border: 1px solid var(--border-color);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
     padding: calc(var(--gutter) * 1.5);
     border-radius: 8px;
     max-width: 700px; /* Largeur maximale de la modale */
@@ -647,8 +695,8 @@ a:hover, a:focus {
     margin-bottom: var(--gutter);
     display: block; /* Pour centrer avec margin auto si besoin */
 }
-#projectModal .close-modal-btn { 
-    color: var(--text-secondary); 
+#projectModal .close-modal-btn {
+    color: var(--text-secondary);
     background: none;
     border: none;
     font-size: 2rem;
@@ -668,9 +716,9 @@ a:hover, a:focus {
 /* Styles pour tablettes et petits desktops (jusqu'à 992px) */
 @media (max-width: 992px) {
     .hero-content { max-width: 75%; }
-    .hero-image-container { 
-        width: 350px; 
-        height: 450px; 
+    .hero-image-container {
+        width: 350px;
+        height: 450px;
         /* Sur tablette, on pourrait vouloir recentrer l'image ou la passer en dessous */
         /* Pour l'instant, on la garde à droite, mais elle pourrait commencer à chevaucher le texte */
     }
@@ -679,27 +727,27 @@ a:hover, a:focus {
 
 /* Styles pour mobiles (jusqu'à 768px) */
 @media (max-width: 768px) {
-    .hero-section { 
-        text-align: center; 
-        align-items: center; 
-        flex-direction: column; 
-        justify-content: center; 
+    .hero-section {
+        text-align: center;
+        align-items: center;
+        flex-direction: column;
+        justify-content: center;
         min-height: 80vh; /* Un peu moins haut sur mobile */
     }
-    .hero-content { 
-        max-width: 90%; 
-        text-align: center; 
-        margin-bottom: 2rem; 
+    .hero-content {
+        max-width: 90%;
+        text-align: center;
+        margin-bottom: 2rem;
     }
-    .hero-section h1 { 
+    .hero-section h1 {
         font-size: clamp(2.8rem, 10vw, 4.5rem); /* Taille adaptée pour mobile */
     }
-    .hero-image-container { 
+    .hero-image-container {
         position: relative; /* Repositionnement pour mobile */
-        width: 80%; 
-        height: 300px; 
+        width: 80%;
+        height: 300px;
         margin: 0 auto 2rem auto; /* Centré et avec marge en bas */
-        top:auto; transform:none; left:auto; right:auto; 
+        top:auto; transform:none; left:auto; right:auto;
     }
     .scroll-down-circle {
         width: 70px; height: 70px; font-size: 0.6rem;
@@ -727,31 +775,31 @@ a:hover, a:focus {
     .main-nav ul {
         display: none; /* Caché par défaut, affiché par JS */
         position: fixed; /* Prend tout l'écran */
-        top: 0; left: 0; right: 0; bottom: 0; 
-        background-color: var(--bg-color); 
-        flex-direction: column; 
-        align-items: center; 
-        justify-content: center; 
+        top: 0; left: 0; right: 0; bottom: 0;
+        background-color: var(--bg-color);
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
         padding: var(--gutter);
         z-index: 1000; /* En dessous du bouton burger mais au-dessus du reste */
     }
     .main-nav ul.active { display: flex; } /* Affiché quand actif */
-    
+
     /* Étend le header sur toute la hauteur quand le menu est ouvert */
     .site-header:has(.main-nav ul.active) {
         height: 100%;
     }
     .main-nav ul li { text-align: center; margin: 1rem 0; }
     .main-nav a { font-size: 1.2rem; } /* Liens plus grands pour le mobile */
-    
+
     /* Ajustement du soulignement des titres h2 sur mobile */
     /* Si le titre est left-aligned mais devient centré sur mobile, on le force au centre */
-    h2.wavy-underline.left-aligned-title::after { 
+    h2.wavy-underline.left-aligned-title::after {
         left: 50%; /* Centré */
         transform-origin: center bottom;
     }
     .reveal-on-scroll.is-visible h2.wavy-underline.left-aligned-title::after,
-    h2.wavy-underline.is-visible.left-aligned-title::after { 
+    h2.wavy-underline.is-visible.left-aligned-title::after {
         transform: translateX(-50%) scaleX(1); /* Assure le centrage de l'animation */
         opacity: 1;
     }
@@ -766,7 +814,7 @@ a:hover, a:focus {
         display: flex; /* Ou grid avec une seule colonne */
         flex-direction: column;
     }
-     .about-section .about-image { 
+     .about-section .about-image {
         order: 2; /* Image après le texte */
         margin-top: var(--gutter);
     }
@@ -782,6 +830,17 @@ a:hover, a:focus {
         grid-template-columns: repeat(2, 1fr);
     }
 
+    .projects-grid .project-card:last-child:nth-child(odd) {
+        grid-column: 1 / -1;
+        justify-self: center;
+        width: 100%;
+        max-width: calc((100% - (var(--gutter) * 2.5)) / 2);
+    }
+
+    .skills-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
     /* Section "About" avec image à côté du texte */
     .about-section .container {
         display: grid;
@@ -789,7 +848,7 @@ a:hover, a:focus {
         gap: calc(var(--gutter) * 2.5);
         align-items: center;
     }
-     .about-section .about-image { 
+     .about-section .about-image {
         order: 1; /* Image à droite (ou selon l'ordre dans le HTML) */
         margin-top:0;
     }
@@ -815,8 +874,8 @@ a:hover, a:focus {
     font-size: 0.9rem;
     font-weight: 500;
     /* Transition douce pour l'apparition/disparition */
-    transition: opacity 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), 
-                transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), 
+    transition: opacity 0.4s cubic-bezier(0.25, 0.8, 0.25, 1),
+                transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1),
                 visibility 0s linear 0.4s; /* Délai pour visibility pour permettre la transition out */
 }
 
@@ -824,7 +883,7 @@ a:hover, a:focus {
     opacity: 1;
     visibility: visible;
     transform: translateX(-50%) translateY(0); /* Position finale */
-    transition: opacity 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), 
-                transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), 
+    transition: opacity 0.4s cubic-bezier(0.25, 0.8, 0.25, 1),
+                transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1),
                 visibility 0s linear 0s;
 }
